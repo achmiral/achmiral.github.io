@@ -62,3 +62,11 @@
 	.il { color: #009999 } /* Literal.Number.Integer.Long */
 }
 
+.image-wrapper {
+    text-align: center;
+
+    .image-caption {
+        color: #B2B4B3;
+        margin-top: 8px / 3;
+    }
+}
