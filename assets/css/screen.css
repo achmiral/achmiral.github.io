@@ -132,6 +132,11 @@ License: https://www.wowthemes.net/freebies-license/
      margin-right:13px;
      border-radius:100%;
 }
+ .author-thumb-container {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 12px;
+}
  .post-top-meta {
      margin-bottom:2rem;
 }
