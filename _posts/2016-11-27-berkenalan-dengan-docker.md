@@ -4,6 +4,7 @@ title:  "Berkenalan dengan Docker"
 author: miral
 categories: [ Docker, tutorial ]
 image: assets/images/10.jpg
+image_external: false
 featured: true
 hidden: true
 ---

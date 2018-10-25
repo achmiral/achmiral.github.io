@@ -4,8 +4,9 @@ title:  "Tulisan Pertama"
 author: miral
 categories: [ tutorial ]
 image: assets/images/16.jpg
-featured: true
-hidden: true
+image_external: false
+featured: false
+hidden: false
 ---
 Hallo teman-teman, [achmiral.id](http://www.achmiral.id) ini adalah sebuah
 blog yang saya buat untuk menuliskan semua hal tentang pemograman, ngoding,
