@@ -7,7 +7,7 @@ favicon: 'favicon.ico'
 url: 'http://achmiral.id'
 baseurl: ''
 google_analytics: 'UA-86909679-1'
-disqus: ''
+disqus: 'achmiral-id'
 mailchimp-list: ''
 
 # Authors
