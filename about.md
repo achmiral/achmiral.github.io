@@ -1,84 +1,34 @@
 ---
 layout: page
-title: Mediumish Template for Jekyll
-comments: true
+title: About Me
+comments: false
 ---
 
-This website is built with Jekyll and Mediumish template for Jekyll. It is meant for demonstration purposes, no real content can be found. Mediumish template for Jekyll is compatible with Github pages, in fact even this demo is created with Github Pages and hosted with Github. This page in example shows a page layout.
+#### Halo
 
-![jekyll template mediumish]({{site.baseurl}}/assets/images/mediumish-jekyll-template.png){: .shadow}
+Selamat datang di blog pribadi saya. Blog ini berisi tulisan-tulisan saya selama belajar pemograman. Sebisa mungkin saya akan meluangkan waktu untuk mengupdate tulisan-tulisan di blog ini.
 
-### Features
+#### Tentang Author
 
-- Built for Jekyll
-- Compatible with Github pages
-- Featured Posts
-- Index Pagination
-- Post Share
-- Post Categories
-- Prev/Next Link
-- Category Archives (this is not yet compatible with github pages though)
-- Jumbotron Categories
-- Integrations:
-    - Disqus Comments
-    - Google Analaytics
-    - Mailchimp Integration
-- Design Features:
-    - Bootstrap v4.x
-    - Font Awesome
-    - Masonry
-- Layouts:
-    - Default
-    - Post
-    - Page
-    - Archive
-    
-### How to Use
+<center>
+    <img src="{{site.url}}/assets/images/about-photo.png" class="img-circle" alt="">
+</center>
+<br>
 
-If you aren't familiar with Jekyll yet, you should know that it is a static site generator. It will transform your plain text into static websites and blogs. No more databases, slow loading websites, risk of being hacked...just your content. And not only that, with Jekyll you get free hosting with GitHub Pages! This page itself is free hosted on Github with the help of Jekyll and Mediumish template that you're currently previewing. If you are a beginner we recommend you start with [Jekyll's Docs](https://jekyllrb.com/docs/installation/){:target="_blank"}. Now if you know how to use Jekyll, let's move on to using Mediumish template in Jekyll:
+Perkenalkan nama saya Miral Achmed biasa dipanggil Miral (kadang-kadang juga dipanggil Ral).
+Sekarang kuliah di Universitas AMIKOM Yogyakarta, tahun terakhir. 
 
-#### Using Mediumish
+Beberapa waktu belakangan ini lagi senang belajar bahasa pemograman [Ruby](https://www.ruby-lang.org/en/) dan Web Framework [Ruby on Rails](https://rubyonrails.org/).
 
-Download or Fork *Mediumish for Jekyll*. 
-- In your local project, open <code>_config.yml</code>. If your site is in root, for <code>baseurl</code>, make sure this is set to <code>baseurl: /</code>. Also, change your Google Analytics code, disqus username, authors, Mailchimp list etc.
-- Mediumish requires 2 plugins: 
-    - <code>$ gem install jekyll-paginate</code>
-    - <code>$ gem install jekyll-archives</code>.
-- Edit the menu and footer copyrights in <code>default.html</code>
-- Start by adding your .md files in <code>_posts</code>. Mediumish already has a few as an example. 
-- YAML front matter
-    - featured post - <code>featured:true</code>
-    - exclude featured post from "All stories" loop to avoid duplicated posts - <code>hidden:true</code>
-    - post image - <code>image: assets/images/mypic.jpg</code>
-    - page comments - <code>comments:true</code>
-    - meta description (optional) - <code>description: "this is my meta description"</code>
-    
-YAML Post Example:
-<pre>
----
-layout: post
-title:  "We all wait for summer"
-author: john
-categories: [ Jekyll, tutorial ]
-image: assets/images/5.jpg
-featured: true
----
-</pre>
+Sehingga postingan-postingan di blog ini kemungkinan akan banyak membahas mengenai kasus-kasus ataupun hal-hal menarik yang saya temukan selama mempelajari kedua hal tersebut.
 
-YAML Page Example
-<pre>
----
-layout: page
-title: Mediumish Template for Jekyll
-comments: true
----
-</pre>
+Keseharian saya biasa diisi dengan kegiatan kampus (_Ngerjain Skripsi_ Wkwkwk), di _weekend_ saya biasa latihan _drone race_ bersama teman-teman pilot dari [Gudeg FPV](https://www.instagram.com/gudegfpv/).
 
-#### Contribute
+<center>
+    <img src="{{site.url}}/assets/images/drone.jpg" class="img-circle" alt="">
+</center>
+<br>
 
-- [Clone the repo](https://github.com/wowthemesnet/mediumish-theme-jekyll).
-- Create a branch off of master and give it a meaningful name (e.g. my-new-mediumish-feature).
-- Open a pull request on GitHub and describe the feature or fix.
+Terima kasih sudah berkunjung di blog ini, saya berharap tulisan-tulisan di blog ini bisa menambah motivasi teman-teman untuk belajar pemrograman. 
 
-
-<a href="https://www.buymeacoffee.com/sal" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+Salam Rubyist!!
