@@ -9,7 +9,7 @@ featured: true
 hidden: true
 ---
 
-Setelah beberapa tahun blog ini tak terurus, saya mencoba menghidupkan kembali blog ini tentunya dengan topik yang rasa cukup menarik, yang akan saya tulis disela-sela kesibukan saya mengerjakan skripsi wkwkwk. Kalau gak salah tulisan terakhir itu tanggal 30 November 2016, udah lama banget yah.
+Setelah beberapa tahun blog ini tak terurus, saya mencoba menghidupkan kembali blog ini tentunya dengan topik yang saya rasa cukup menarik, yang akan saya tulis disela-sela kesibukan saya mengerjakan skripsi wkwkwk. Kalau gak salah tulisan terakhir itu tanggal 30 November 2016, udah lama banget yah.
 
 Jadi beberapa hari yang lalu saya mendapatkan _contract_ pertama saya di [upwork](https://www.upwork.com/o/profiles/users/_~01c156fb88f920717c/) (Horeee). 
 Di dalam contractnya saya diminta untuk membimbing si client untuk membuat sebuah aplikasi web sederhana menggunakan web framework [sinatra](http://sinatrarb.com), mulai dari awal pembuatan project sampai bisa di deploy ke [heroku](https://sinatra-crud-postgresql.herokuapp.com). 
