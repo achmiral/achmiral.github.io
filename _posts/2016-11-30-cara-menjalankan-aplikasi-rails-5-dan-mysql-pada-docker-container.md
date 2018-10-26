@@ -3,8 +3,8 @@ layout: post
 title:  "Cara Menjalankan Aplikasi Rails 5 + MySQL Pada Docker Container"
 author: miral
 categories: [ Ruby, Ruby on Rails, Docker, Container, tutorial ]
-image: assets/images/11.jpg
-image_external: false
+image: https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=488a4ba9014132269a54faab75b6de49&auto=format&fit=crop&w=768&q=80
+image_external: true
 featured: true
 hidden: true
 ---
