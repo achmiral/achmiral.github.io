@@ -52,7 +52,7 @@
     {% if page.image_external %}
       <meta content="{{ page.image }}" property="og:image">
     {% else %}
-      <meta content="{{ site.url }}/assets/images/{{ page.image }}" property="og:image">
+      <meta content="{{ site.url }}/{{ page.image }}" property="og:image">
     {% endif %}
 {% else %}
   <meta content="{{ site.url }}/assets/images/achmiral-icon-1.png" property="og:image">
