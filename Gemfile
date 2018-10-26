@@ -15,4 +15,6 @@ group :jekyll_plugins do
     gem 'jekyll-sitemap'
     gem 'jekyll-archives'
     gem 'jekyll-paginate'
+    gem 'jekyll-compose'
+    gem 'jemoji'
 end

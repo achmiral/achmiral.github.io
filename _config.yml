@@ -26,6 +26,8 @@ authors:
 plugins: 
   - jekyll-paginate
   - jekyll-archives
+  - jekyll-compose
+  - jemoji
     
 # Archives
 jekyll-archives:
