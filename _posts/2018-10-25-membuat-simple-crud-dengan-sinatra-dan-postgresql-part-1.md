@@ -71,7 +71,7 @@ get '/' do
   "Hello World!"
 end
 ```
-Penjelasan dari baris kode diatas adalah kita mendeklarasikan sebuah route baru di aplikasi sinatra kita, dimana ketika ada `GET` request ke alamat "`/`" dari client makan aplikasi sinatra kita akan memberikan _response_ berupa text _"Hello World!"_
+Penjelasan dari baris kode diatas adalah pertama kita akan memanggil _library_ sinatra menggunakan syntax `require "sinatra"`, kemudian kita mendeklarasikan sebuah route baru di aplikasi sinatra kita. Ketika ada `GET` request ke alamat "`/`", maka aplikasi sinatra kita akan memberikan _response_ berupa text _"Hello World!"_.
 
 Untuk melihat hasilnya jalankan perintah
 <pre>$ ruby app.rb</pre>
@@ -82,10 +82,10 @@ Buka browser teman-teman, dan akses `http://localhost:4567`, jika berhasil maka 
 
 ![sinatra hello world]({{site.url}}/assets/images/sinatra-crud-postgres/Screenshot_2018-10-25_23-31-42.png)
 
-Yeay, selamat kita telah berhasi membuat aplikasi web minimalis kita menggunakan sinatra.
+Yeay, selamat kita telah berhasil membuat aplikasi web minimalis kita menggunakan sinatra.
 
-Ditulisan berikutnya saya akan membahas mengenani bagaimana cara menghubungkan aplikasi sinatra kita ke database postgresql menggunakan active record.
+Ditulisan berikutnya saya akan membahas bagaimana cara menghubungkan aplikasi sinatra kita ke database postgresql menggunakan active record.
 
-Terima kasih sudah meluangkan waktunya untuk membaca tulisan saya yang ini.
+Terima kasih sudah meluangkan waktunya untuk membaca tulisan saya ini.
 
 Salam Rubyist!!
