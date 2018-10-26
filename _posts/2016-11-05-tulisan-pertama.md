@@ -6,7 +6,7 @@ categories: [ tutorial ]
 image: assets/images/16.jpg
 image_external: false
 featured: false
-hidden: false
+hidden: true
 ---
 Hallo teman-teman, [achmiral.id](http://www.achmiral.id) ini adalah sebuah
 blog yang saya buat untuk menuliskan semua hal tentang pemograman, ngoding,
