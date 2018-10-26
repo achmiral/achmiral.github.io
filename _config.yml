@@ -9,6 +9,7 @@ baseurl: ''
 google_analytics: 'UA-86909679-1'
 disqus: 'achmiral-id'
 mailchimp-list: ''
+permalink: /:year/:month/:day/:title
 
 # Authors
 authors:
