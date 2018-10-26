@@ -5,8 +5,8 @@ author: miral
 categories: [ Docker, tutorial ]
 image: assets/images/10.jpg
 image_external: false
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 Selamat malam teman-teman. Kali ini saya ingin share ilmu yang baru saja saya pelajari yaitu [Docker](http://docker.com). Pertama kali saya mengenal docker adalah ketika saya mengikuti event [Docker Global Mentor Week - Yogyakarta](https://www.meetup.com/Docker-Indonesia/events/235327661/) yang diselegarakan oleh [Docker Indonesia](https://www.meetup.com/Docker-Indonesia)

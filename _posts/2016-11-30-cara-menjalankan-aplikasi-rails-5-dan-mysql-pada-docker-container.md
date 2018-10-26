@@ -5,8 +5,8 @@ author: miral
 categories: [ Ruby, Ruby on Rails, Docker, Container, tutorial ]
 image: assets/images/11.jpg
 image_external: false
-featured: false
-hidden: false
+featured: true
+hidden: true
 ---
 
 Selamat malam teman-teman, kali ini saya ingin sharing tutorial bagaimana cara menggunakan Docker pada aplikasi Rails versi 5. 
