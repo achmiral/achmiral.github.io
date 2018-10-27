@@ -21,7 +21,7 @@ Di tulisan kali ini saya ini berbagi bagaimana cara membuat sebuah aplikasi CRUD
 
 Tulisan ini nantinya terdiri dari 4 part:
 + Part 1 - Basic Sinatra
-+ Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record (Comming Soon)
++ [Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record] (/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2)
 + Part 3 - CRUD dan View (Comming Soon)
 + Part 4 - Push project ke heroku (Comming Soon)
 
