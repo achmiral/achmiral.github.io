@@ -19,10 +19,11 @@ Tapi yah mumpung dapat kesempatan bagus, lumayan bisa belajar terus dapat bayara
 
 Di tulisan kali ini saya ini berbagi bagaimana cara membuat sebuah aplikasi CRUD sederhana menggunakan framework Sinatra dan RDBMS Postgresql.
 
-Tulisan ini nantinya terdiri dari 3 part:
+Tulisan ini nantinya terdiri dari 4 part:
 + Part 1 - Basic Sinatra
 + Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record (Comming Soon)
-+ Part 3 - Tambah Tampilan Untuk View (Comming Soon)
++ Part 3 - CRUD dan View (Comming Soon)
++ Part 4 - Push project ke heroku (Comming Soon)
 
 Okey kita mulai saja.
 
