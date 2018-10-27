@@ -14,6 +14,8 @@ Untuk yang belum baca bisa dibaca [disini](/2018/10/25/membuat-simple-crud-denga
 
 Di Part 2 ini, kita akan mempelajari bagaimana menghubungkan aplikasi sinatra yang sudah kita buat di [Part 1](/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1) ke database Postgresql menggunakan activerecord.
 
+Okey langsung saja kita mulai.
+
 Langkah pertama, tambahkan beberapa gem yang dibutuhkan.
 
 ```ruby
@@ -44,7 +46,7 @@ Kemudian tambahkan kode berikut ini.
 development:
   adapter: postgresql
   encoding: unicode
-  database: crud_development # ganti dengan nama database yang diinginkan
+  database: sinatra-crud_development # ganti dengan nama database yang diinginkan
   pool: 5
   host: localhost
   username: root # ganti dengan username postgresql teman-teman
