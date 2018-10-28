@@ -4,7 +4,7 @@ title: About Me
 comments: false
 ---
 
-#### Halo
+#### Halo!!
 
 Selamat datang di blog pribadi saya. Blog ini berisi tulisan-tulisan saya selama belajar pemograman. Sebisa mungkin saya akan meluangkan waktu untuk mengupdate tulisan-tulisan di blog ini.
 
