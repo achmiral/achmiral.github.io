@@ -15,7 +15,7 @@ Selamat datang di blog pribadi saya. Blog ini berisi tulisan-tulisan saya selama
 </center>
 <br>
 
-Perkenalkan nama saya Miral Achmed biasa dipanggil Miral (kadang-kadang juga dipanggil Ral).
+Perkenalkan nama saya Miral Achmed biasa dipanggil Miral.
 Sekarang kuliah di Universitas AMIKOM Yogyakarta, tahun terakhir. 
 
 Beberapa waktu belakangan ini lagi senang belajar bahasa pemograman [Ruby](https://www.ruby-lang.org/en/) dan Web Framework [Ruby on Rails](https://rubyonrails.org/).
