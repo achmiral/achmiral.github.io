@@ -37,7 +37,7 @@
 {% endif %}
 
 {% if page.categories %}
-  {% for category in page.categories limit:5 %}
+  {% for category in page.categories limit:1 %}
   <meta content="{{ category }}" property="article:section">
   {% endfor %}
 {% endif %}
