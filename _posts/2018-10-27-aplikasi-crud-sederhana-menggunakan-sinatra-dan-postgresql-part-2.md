@@ -14,6 +14,14 @@ Untuk yang belum baca bisa dibaca [disini](/2018/10/25/membuat-simple-crud-denga
 
 Di Part 2 ini, kita akan mempelajari bagaimana menghubungkan aplikasi sinatra yang sudah kita buat di [Part 1](/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1) ke database Postgresql menggunakan activerecord.
 
+
+Sedekar informasi buat teman-teman yang baru berkunjung di blog ini. Tulisan ini terdiri dari 4 part, berikut ini daftar setiap part nya:
+
++ [Part 1 - Basic Sinatra](/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1)
++ Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record
++ [Part 3 - CRUD dan View](http://localhost:4000/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3)
++ Part 4 - Push project ke heroku (Comming Soon)
+
 Okey langsung saja kita mulai.
 
 Langkah pertama, tambahkan beberapa gem yang dibutuhkan.
