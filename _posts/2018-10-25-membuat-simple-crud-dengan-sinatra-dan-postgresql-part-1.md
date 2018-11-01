@@ -6,7 +6,7 @@ categories: [ ruby, sinatra, activerecord, postgresql, tutorial ]
 image: https://images.unsplash.com/photo-1533057050352-377250b84174?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2c6696fdda41af8c67896ae9872409a0&auto=format&fit=crop&w=750&q=80
 image_external: true
 featured: true
-hidden: true
+hidden: false
 ---
 
 Setelah beberapa tahun blog ini tak terurus, saya mencoba menghidupkan kembali blog ini tentunya dengan topik yang saya rasa cukup menarik, yang akan saya tulis disela-sela kesibukan saya mengerjakan skripsi wkwkwk. Kalau gak salah tulisan terakhir itu tanggal 30 November 2016, udah lama banget yah.
