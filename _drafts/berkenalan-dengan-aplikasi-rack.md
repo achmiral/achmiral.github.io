@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Berkenalan Dengan Aplikasi Rack
+title: Berkenalan Dengan Rack
 author: miral
 categories: [ ruby, rack, ]
 image: assets/images/intro-rack/rack-image.png
