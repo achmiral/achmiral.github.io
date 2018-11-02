@@ -3,8 +3,8 @@ layout: post
 title: Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 3]
 author: miral
 categories: [ sinatra, ruby, activerecord, postgresql, tutorial ]
-image: https://images.unsplash.com/photo-1519114056088-b877fe073a5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=148b001f50f5029d6193578567d18eca&auto=format&fit=crop&w=890&q=80
-image_external: true
+image: assets/images/sinatra-crud-postgres/page-3.png
+image_external: false
 featured: true
 hidden: false
 ---
