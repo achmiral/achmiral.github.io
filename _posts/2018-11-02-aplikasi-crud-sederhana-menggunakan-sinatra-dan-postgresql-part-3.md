@@ -6,7 +6,7 @@ categories: [ sinatra, ruby, activerecord, postgresql, tutorial ]
 image: assets/images/sinatra-crud-postgres/page-3.png
 image_external: false
 featured: true
-hidden: false
+hidden: true
 ---
 
 Halo teman-teman kembali lagi di tulisan saya tentang belajar membuat **Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql**.
