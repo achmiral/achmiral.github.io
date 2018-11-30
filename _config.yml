@@ -4,7 +4,7 @@ description: "My Simple Personal Blog"
 meta_description: "Simple Personal Blog by Miral Achmed"
 logo: 'assets/images/miral-achmed-1.png'
 favicon: 'favicon.ico'
-url: 'http://achmiral.id'
+url: 'https://achmiral.id'
 baseurl: ''
 google_analytics: 'UA-86909679-1'
 disqus: 'achmiral-id'
