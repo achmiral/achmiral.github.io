@@ -112,5 +112,5 @@ var ready = function() {
   
 }
 
-jQuery(document).on(ready);
+jQuery(document).ready(ready);
 jQuery(document).on("turbolinks:load", ready);
