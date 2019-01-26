@@ -5,8 +5,8 @@ author: miral
 categories: [ ruby, sinatra, activerecord, postgresql, tutorial ]
 image: assets/images/sinatra-crud-postgres/page-1.png
 image_external: false
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 Setelah beberapa tahun blog ini tak terurus, saya mencoba menghidupkan kembali blog ini tentunya dengan topik yang saya rasa cukup menarik, yang akan saya tulis disela-sela kesibukan saya mengerjakan skripsi wkwkwk. Kalau gak salah tulisan terakhir itu tanggal 30 November 2016, udah lama banget yah.
