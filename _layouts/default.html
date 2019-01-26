@@ -63,15 +63,15 @@
         
             <ul class="navbar-nav ml-auto">
                 
-                {% if page.url == "/" %}
+                {% if page.url == "/blog" %}
                 <li class="nav-item active">
                 {% else %}
                 <li class="nav-item">
                 {% endif %}
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/blog">blog</a>
                 </li>
                 
-                {% if page.url == "/about.html" %}
+                {% if page.url == "/about" %}
                 <li class="nav-item active">
                 {% else %}
                 <li class="nav-item">
@@ -210,6 +210,7 @@
 <script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
     
 <script src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
+<script src="{{ site.baseurl }}/assets/js/turbolinks.js" type="text/javascript" charset="utf-8"></script>
     
 <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
 </body>
