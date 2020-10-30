@@ -1,7 +1,14 @@
-.PHONY: serve push
+default: serve 
 
-serve:
-	bundle exec jekyll serve
+i install:
+	bundle config set --local path vendor/bundle
+	bundle install
 
-push:
+s serve:
+	bundle exec jekyll serve --livereload --trace
+
+p push:
 	git push origin master
+
+h help:
+	@egrep '^\S|^$$' Makefile
