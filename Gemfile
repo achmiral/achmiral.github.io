@@ -9,7 +9,10 @@ ruby RUBY_VERSION
 #
 
 # If you have any plugins, put them here!
+gem 'jekyll', '~> 4.1', '>= 4.1.1'
+
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
 group :jekyll_plugins do
     gem 'jekyll-feed'
     gem 'jekyll-sitemap'
