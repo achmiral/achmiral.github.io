@@ -11,22 +11,19 @@ Selamat datang di blog pribadi saya. Blog ini berisi tulisan-tulisan saya selama
 #### Tentang Author
 
 <center>
-    <img src="{{site.url}}/assets/images/about-photo.png" class="img-circle" alt="">
+  <img src="{{site.url}}/assets/images/about-photo.png" class="img-circle" alt="">
 </center>
 <br>
 
 Perkenalkan nama saya Miral Achmed biasa dipanggil Miral.
-Sekarang kuliah di Universitas AMIKOM Yogyakarta, tahun terakhir. 
+Sekarang saya bekerja sebagai `Junior Ruby Web Developer` di [Supersewa](https://supersewa.com). Saya alumni Universitas AMIKOM Yogyakarta. Sekarang berdomisili di Yogyakarta.
 
-Beberapa waktu belakangan ini lagi senang belajar bahasa pemograman [Ruby](https://www.ruby-lang.org/en/) dan Web Framework [Ruby on Rails](https://rubyonrails.org/).
-
-Sehingga postingan-postingan di blog ini kemungkinan akan banyak membahas mengenai kasus-kasus ataupun hal-hal menarik yang saya temukan selama mempelajari kedua hal tersebut.
-
-Keseharian saya biasa diisi dengan kegiatan kampus (_Ngerjain Skripsi_ Wkwkwk), di _weekend_ saya biasa latihan _drone race_ bersama teman-teman pilot dari [Gudeg FPV](https://www.instagram.com/gudegfpv/).
+Tiap _weekend_ saya biasa latihan _drone race_ bersama teman-teman pilot FPV drone yang ada di Jogja, beberapa video freestyle maupun video race saya dapat dilihat di akun instagram saya [@achmiral](https://instagram.com/achmiral).
 
 <center>
-    <img src="{{site.url}}/assets/images/drone.jpg" class="img-circle" alt="">
+  <img src="{{site.url}}/assets/images/new-fpv-rig.jpg" height="500" alt="New FPV Rig">
 </center>
+
 <br>
 
 Terima kasih sudah berkunjung di blog ini, saya berharap tulisan-tulisan di blog ini bisa menambah motivasi teman-teman untuk belajar pemrograman. 
