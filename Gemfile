@@ -1,4 +1,5 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
+
 ruby RUBY_VERSION
 
 # Hello! This is where you manage which Jekyll version is used to run.
@@ -14,10 +15,10 @@ gem 'jekyll', '~> 4.1', '>= 4.1.1'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 group :jekyll_plugins do
-    gem 'jekyll-feed'
-    gem 'jekyll-sitemap'
-    gem 'jekyll-archives'
-    gem 'jekyll-paginate'
-    gem 'jekyll-compose'
-    gem 'jemoji'
+  gem 'jekyll-archives'
+  gem 'jekyll-compose'
+  gem 'jekyll-feed'
+  gem 'jekyll-paginate'
+  gem 'jekyll-sitemap'
+  gem 'jemoji'
 end
