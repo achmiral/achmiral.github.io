@@ -14,7 +14,7 @@ permalink: /linkbio
     
     <div class="row listrecent">
 
-        {% for post in site.data.linkbio %}
+        {% for post in site.data.linkbio reversed %}
            {% include link_bio_box.html %}
         {% endfor %}
         
