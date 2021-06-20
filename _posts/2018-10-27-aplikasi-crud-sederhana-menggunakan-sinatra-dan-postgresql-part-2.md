@@ -81,16 +81,16 @@ class Post < ActiveRecord::Base
 end
 ```
 
-Setelah itu buat sebuah file baru lagi bernama `Rackfile`.
+Setelah itu buat sebuah file baru lagi bernama `Rakefile`.
 
 ```ruby
-# Rackfile
+# Rakefile
 require "sinatra/activerecord"
 require "sinatra/activerecord/rake"
 require "./app"
 ```
 
-`Rackfile` dibutuhkan agar kita dapat menggunakan perintah `rake` pada project kita. 
+`Rakefile` dibutuhkan agar kita dapat menggunakan perintah `rake` pada project kita. 
 
 Untuk membuat database dapat menggunakan perintah berikut.
 
@@ -180,4 +180,9 @@ Ditulisan berikutnya saya akan membahas bagaimana cara membuat Create Read Updat
 Terima kasih sudah meluangkan waktunya untuk membaca tulisan saya ini.
 
 Salam Rubyist!!
+
+
+#### Update
+
+- [20 Juni 2021] Fix typo Rackfile to Rakefile 
 
