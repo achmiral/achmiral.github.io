@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+<link rel="icon" href="/assets/images/favicon.ico">
+    
+<title>Berkenalan dengan Docker | Miral Achmed</title>
+    
+ 
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+   
+<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+    
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/turbolinks.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Open graph facebook -->
+<meta content="Miral Achmed" property="og:site_name">
+
+  <meta content="Berkenalan dengan Docker" property="og:title">
+
+
+  <meta content="article" property="og:type">
+
+
+
+  <meta content="My Simple Personal Blog" property="og:description">
+
+
+
+  <meta content="https://achmiral.id/2016/11/27/berkenalan-dengan-docker" property="og:url">
+
+
+
+  <meta content="2016-11-27T00:00:00+00:00" property="article:published_time">
+  <meta content="https://achmiral.id/about/" property="article:author">
+
+
+
+    
+      <meta content="https://images.unsplash.com/photo-1535986437535-2417b0f5947f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=daf6d2858bfaef8340283cea3c67073b&auto=format&fit=crop&w=750&q=80" property="og:image">
+    
+
+
+
+  
+  <meta content="Docker" property="article:section">
+  
+
+
+
+  
+
+<!-- end open graph -->
+    
+</head>
+    
+
+    
+
+<body class="layout-post">
+
+    
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    
+    <div class="container pr-0">    
+    
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/miral-achmed-1.png" alt="Miral Achmed">
+    </a>
+    <!-- End Logo -->
+  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+       
+        <!-- Begin Menu -->
+        
+            <ul class="navbar-nav ml-auto">
+                
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/">Home</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.github.com/achmiral"><i class="fab fa-github"></i></a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.linkedin.com/in/achmiral/"><i class="fab fa-linkedin"></i></a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://instagram.com/achmiral"><i class="fab fa-instagram"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://twitter.com/achmiral"><i class="fab fa-twitter"></i></a>
+                </li>
+
+                <li class="nav-item">
+                  <a target="_blank" class="nav-link" href="https://dev.to/achmiral">
+                    <i class="fab fa-dev"></i>
+                  </a>
+                </li>
+                
+            </ul>		
+  
+        <!-- End Menu -->
+
+    </div>
+        
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+    
+<div class="site-content">   
+<div class="container">
+    
+<!-- Site Title
+================================================== -->
+<!-- <div class="mainheading">
+    <h1 class="sitetitle">Miral Achmed</h1>
+    <p class="lead">
+         My Simple Personal Blog
+    </p>
+</div> -->
+
+    
+    
+<!-- Content
+================================================== --> 
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+	<div class="row">
+
+		<!-- Post Share -->
+		<div class="col-md-2 pl-0">            
+           <div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Berkenalan%20dengan%20Docker&amp;url=https://achmiral.id/2016/11/27/berkenalan-dengan-docker" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https://achmiral.id/2016/11/27/berkenalan-dengan-docker" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://plus.google.com/share?url=https://achmiral.id/2016/11/27/berkenalan-dengan-docker" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <i class="fab fa-google"></i>
+        </a>
+        </li>
+        
+    </ul>
+    
+    <div class="sep">
+    </div>				
+    <ul>
+        <li> 
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>  
+		</div>
+		
+
+		<!-- Post -->        
+        
+        
+		<div class="col-md-9 flex-first flex-md-unordered">
+			<div class="mainheading">
+
+                <!-- Author Box -->
+                				
+				<div class="row post-top-meta">
+					<div class="col-md-2 author-thumb-container">
+						<img class="author-thumb" src="https://www.gravatar.com/avatar/3654d753e5a623523e5190e7b3ec59e5?s=250&amp;d=mm&amp;r=x" alt="Miral Achmed">
+					</div>
+					<div class="col-md-10">
+                        <div class="col-xs-12">
+    						<a target="_blank" class="link-dark" href="https://achmiral.id">Miral Achmed</a>
+                            <a target="_blank" href="https://twitter.com/achmiral" class="btn follow">Follow</a><br>
+                        </div>
+						<span class="author-description">Author of achmiral.id, FPV Drone Racing Pilot, Rubyist, Currently Student at AMIKOM Yogyakarta</span>						
+					</div>
+				</div>				
+                
+                
+                <!-- Post Title -->
+				<h1 class="posttitle">Berkenalan dengan Docker</h1> 
+                
+			</div>
+
+			<!-- Post Featured Image -->
+			
+                
+                    <a href="https://images.unsplash.com/photo-1535986437535-2417b0f5947f?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=daf6d2858bfaef8340283cea3c67073b&amp;auto=format&amp;fit=crop&amp;w=750&amp;q=80">
+                        <img class="featured-image img-fluid" src="https://images.unsplash.com/photo-1535986437535-2417b0f5947f?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=daf6d2858bfaef8340283cea3c67073b&amp;auto=format&amp;fit=crop&amp;w=750&amp;q=80" alt="Berkenalan dengan Docker">
+                    </a>
+                
+            
+			<!-- End Featured Image -->
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>Selamat malam teman-teman. Kali ini saya ingin share ilmu yang baru saja saya pelajari yaitu <a href="http://docker.com">Docker</a>. Pertama kali saya mengenal docker adalah ketika saya mengikuti event <a href="https://www.meetup.com/Docker-Indonesia/events/235327661/">Docker Global Mentor Week - Yogyakarta</a> yang diselegarakan oleh <a href="https://www.meetup.com/Docker-Indonesia">Docker Indonesia</a>
+di kampus STMIK AKAKOM Yogyakarta. Poster event-nya ada dibawah ini.</p>
+
+<!-- _includes/image.html -->
+<!-- source https://superdevresources.com/image-caption-jekyll/ -->
+<div class="image-wrapper">
+    
+    <a href="https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/b/0/5/5/600_455865141.jpeg" title="Docker Global Mentor Week - Yogyakarta" target="_blank">
+    
+    
+        <img src="https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/b/0/5/5/600_455865141.jpeg" alt="Docker Global Mentor Week - Yogyakarta">
+    
+    
+    </a>
+    
+    
+        <p class="image-caption">Docker Global Mentor Week - Yogyakarta</p>
+    
+</div>
+
+<h3 id="apa-itu-docker">Apa itu Docker?</h3>
+<p>Docker merupakan sebuah platform yang dibangun berdasarkan teknologi container.</p>
+
+<!-- _includes/image.html -->
+<!-- source https://superdevresources.com/image-caption-jekyll/ -->
+<div class="image-wrapper">
+    
+    <a href="https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg" title="container" target="_blank">
+    
+    
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg" alt="container">
+    
+    
+    </a>
+    
+    
+        <p class="image-caption">Container</p>
+    
+</div>
+
+<!-- ![container](https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg)
+*Coba* -->
+
+<p>Tentunya bentuknya bukan seperti container yang di atas, tapi secara fungsi hampir sama.</p>
+
+<h3 id="box-kontainer">Box Kontainer?</h3>
+<p>Misalnya kita ingin mengirim beberapa barang dengan jumlah yang banyak ke luar kota atau ke luar negeri. Sebelum melakukan pengiriman, barang-barang tersebut perlu kita packing atau perlu kita simpan ke dalam tempat yang aman agar barang-barang tersebut tidak rusak ketika proses pengiriman.</p>
+
+<p>Misalnya saja proses pengirimannya dari rumah kita sampai ke tempat tujuan adalah sebagai berikut dari rumah kita, barangnya diantar menggunakan mobil menuju stasiun kereta, kemudian dari stasiun kereta, barangnya diantar menggunakan kereta menuju ke pelabuhan, setibanya di pelabuhan barang tersebut kemudian di angkut ke kapal yang nantinya akan diantarkan ke kota / negara tujuan.</p>
+
+<p>Dengan proses pengiriman yang panjang dan dengan kendaraan pengangkut yang berbeda-beda maka kemungkinan terjadinya kerusakan barang akan semakin besar. Untuk mengatasi masalah tersebut, kita bisa menggunakan container sebagai box pengiriman.</p>
+
+<p>Jika menggunakan box kontainer maka proses pengirimannya akan menjadi lebih mudah. Proses pengirimannya sebagai berikut dari rumah kita barang-barang tersebut akan dimasukkan ke dalam box kontainer, kemudian barang-barang tersebut akan diantar oleh truk kontainer menuju ke stasiun, sesampainya di stasiun kemudian barang-barang tersebut diangkut dan diantar menggunakan kereta kontainer ke pelabuhan, dan setibanya di pelabuhan akan di angkut menggunakan kapal kontainer.</p>
+
+<h3 id="docker-container">Docker Container?</h3>
+<p>Gambaran cara kerja container pada Docker hampir sama seperti kontainer pada pengiriman barang-barang yang telah dijelaskan sebelumnya. Kita anggap barang-barang tersebut terdiri dari aplikasi [aplikasi rails], web server[apache/nginx], dan database server [mysql/postgres]. Dan aplikasi tersebut ingin kita deploy ke production server.</p>
+
+<p>Aplikasi yang kita bangun tentunya membutuhkan banyak dependency library agar bisa running dengan lancar. Sehingga kita perlu menginstall dependency library pada laptop kita juga pada production server . Akan sangat melelahkan jika kita perlu melakukan konfigurasi server agar memiliki konfigurasi yang sama dengan laptop kita ataupun sebaliknya.</p>
+
+<p>Namun, dengan menggunakan docker container masalah tersebut bisa teratasi karena ketika kita membuat sebuah kontainer dari aplikasi yang sedang kita develop maka dependency library yang dibutuhkan oleh aplikasi tersebut ikut masuk ke dalam kontainer. Sehingga kita hanya perlu melakukan sekali konfigurasi agar aplikasi kita bisa running dengan lancar di production server.</p>
+
+<p>Mungkin ini yang dapat saya share untuk kali ini. Terima kasih untuk teman-teman yang sudah meluangkan waktunya untuk membaca tulisan ini, semoga bisa bermanfaat buat teman-teman yang ingin belajar tentang docker <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20">.</p>
+
+<p>Jika teman-teman ingin bergabung dan mendapatkan info event-event yang akan di adakan oleh Docker Indonesia, bisa langsung join di meetup Docker indonesia di <a href="https://www.meetup.com/Docker-Indonesia/">sini</a>, atau bisa join di group facebook <a href="https://telegram.me/dockerid">Docker.ID</a> atau di Group Telegram <a href="https://telegram.me/dockerid">Docker.id</a>.</p>
+
+			</div>
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2016-11-27">27 Nov 2016</time></span>           
+                
+                </small>
+            </p>
+            
+			<!-- Post Categories -->
+			<div class="after-post-tags">
+				<ul class="tags">
+                    
+                    
+                    <li>
+                     <a href="/category/docker/">Docker</a>
+                    </li>
+                    
+                    <li>
+                     <a href="/category/tutorial/">tutorial</a>
+                    </li>
+                    
+				</ul>
+			</div>
+			<!-- End Categories -->
+            
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="https://achmiral.id/2016/11/30/cara-menjalankan-aplikasi-rails-5-dan-mysql-pada-docker-container">Cara Menjalankan Aplikasi Rails 5 + MySQL Pada Docker Container » </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+  
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-2"></div>
+            <div class="col-md-9 mx-auto">              
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'achmiral-id'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+                
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+</div>
+
+<!-- Bottom Alert Bar
+================================================== -->
+<!-- <div class="alertbar">
+	<div class="container text-center">
+		<span><img src="/assets/images/miral-achmed-1.png" alt=""> &nbsp; Never miss a <b>story</b> from us, subscribe to our newsletter</span>
+        <form action="" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate" target="_blank" novalidate>
+            <div class="mc-field-group">
+            <input type="email" placeholder="Email" name="EMAIL" class="required email" id="mce-EMAIL" autocomplete="on" required>
+            <input type="submit" value="Subscribe" name="subscribe" class="heart">
+            </div>
+        </form>
+	</div>
+</div>  -->   
+    
+</div>
+<!-- /.container>
+    
+<!-- Categories Jumbotron
+================================================== -->
+<!-- <div class="jumbotron fortags">
+	<div class="d-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-flex align-items-center justify-content-center h-100">
+			 <h2 class="d-md-block d-none align-self-center">Explore →</h2>
+            </div>
+		</div>
+		<div class="col-md-8 align-self-center text-center">
+            
+          
+             
+              <a href="/category/Docker">Docker (2)</a>
+             
+              <a href="/category/tutorial">Tutorial (7)</a>
+             
+              <a href="/category/Ruby">Ruby (1)</a>
+             
+              <a href="/category/Ruby on Rails">Ruby on rails (1)</a>
+             
+              <a href="/category/Container">Container (1)</a>
+             
+              <a href="/category/ruby">Ruby (4)</a>
+             
+              <a href="/category/sinatra">Sinatra (4)</a>
+             
+              <a href="/category/activerecord">Activerecord (4)</a>
+             
+              <a href="/category/postgresql">Postgresql (4)</a>
+             
+              <a href="/category/jekyll">Jekyll (1)</a>
+             
+              <a href="/category/turbolinks">Turbolinks (1)</a>
+            
+          
+        
+
+		</div>
+	</div>
+</div>
+  -->
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                 Copyright © 2021 Miral Achmed 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+   
+</div> <!-- /.site-content>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v3.2'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat" attribution="setup_tool" page_id="182341549350497">
+</div>
+    
+<script src="/assets/js/jquery.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+<script src="/assets/js/mediumish.js"></script>
+
+<script id="dsq-count-scr" src="//achmiral-id.disqus.com/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+<link rel="icon" href="/assets/images/favicon.ico">
+    
+<title>Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 1] | Miral Achmed</title>
+    
+ 
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+   
+<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+    
+<link href="/assets/css/screen.css" rel="stylesheet">
+    
+<link href="/assets/css/main.css" rel="stylesheet">
+
+<script src="/assets/js/turbolinks.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Open graph facebook -->
+<meta content="Miral Achmed" property="og:site_name">
+
+  <meta content="Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 1]" property="og:title">
+
+
+  <meta content="article" property="og:type">
+
+
+
+  <meta content="My Simple Personal Blog" property="og:description">
+
+
+
+  <meta content="https://achmiral.id/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1" property="og:url">
+
+
+
+  <meta content="2018-10-25T00:00:00+00:00" property="article:published_time">
+  <meta content="https://achmiral.id/about/" property="article:author">
+
+
+
+    
+      <meta content="https://achmiral.id/assets/images/sinatra-crud-postgres/page-1.png" property="og:image">
+    
+
+
+
+  
+  <meta content="ruby" property="article:section">
+  
+
+
+
+  
+
+<!-- end open graph -->
+    
+</head>
+    
+
+    
+
+<body class="layout-post">
+
+    
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    
+    <div class="container pr-0">    
+    
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+    <img src="/assets/images/miral-achmed-1.png" alt="Miral Achmed">
+    </a>
+    <!-- End Logo -->
+  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+       
+        <!-- Begin Menu -->
+        
+            <ul class="navbar-nav ml-auto">
+                
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/">Home</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.github.com/achmiral"><i class="fab fa-github"></i></a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank"  class="nav-link" href="https://www.linkedin.com/in/achmiral/"><i class="fab fa-linkedin"></i></a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank"  class="nav-link" href="https://instagram.com/achmiral"><i class="fab fa-instagram"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                <a target="_blank"  class="nav-link" href="https://twitter.com/achmiral"><i class="fab fa-twitter"></i></a>
+                </li>
+
+                <li class="nav-item">
+                  <a target="_blank" class="nav-link" href="https://dev.to/achmiral">
+                    <i class="fab fa-dev"></i>
+                  </a>
+                </li>
+                
+            </ul>		
+  
+        <!-- End Menu -->
+
+    </div>
+        
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+    
+<div class="site-content">   
+<div class="container">
+    
+<!-- Site Title
+================================================== -->
+<!-- <div class="mainheading">
+    <h1 class="sitetitle">Miral Achmed</h1>
+    <p class="lead">
+         My Simple Personal Blog
+    </p>
+</div> -->
+
+    
+    
+<!-- Content
+================================================== --> 
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+	<div class="row">
+
+		<!-- Post Share -->
+		<div class="col-md-2 pl-0">            
+           <div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 1]&url=https://achmiral.id/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https://achmiral.id/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://plus.google.com/share?url=https://achmiral.id/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <i class="fab fa-google"></i>
+        </a>
+        </li>
+        
+    </ul>
+    
+    <div class="sep">
+    </div>				
+    <ul>
+        <li> 
+        <a  class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>  
+		</div>
+		
+
+		<!-- Post -->        
+        
+        
+		<div class="col-md-9 flex-first flex-md-unordered">
+			<div class="mainheading">
+
+                <!-- Author Box -->
+                				
+				<div class="row post-top-meta">
+					<div class="col-md-2 author-thumb-container">
+						<img class="author-thumb" src="https://www.gravatar.com/avatar/3654d753e5a623523e5190e7b3ec59e5?s=250&d=mm&r=x" alt="Miral Achmed">
+					</div>
+					<div class="col-md-10">
+                        <div class="col-xs-12">
+    						<a target="_blank" class="link-dark" href="https://achmiral.id">Miral Achmed</a>
+                            <a target="_blank" href="https://twitter.com/achmiral" class="btn follow">Follow</a><br>
+                        </div>
+						<span class="author-description">Author of achmiral.id, FPV Drone Racing Pilot, Rubyist, Currently Student at AMIKOM Yogyakarta</span>						
+					</div>
+				</div>				
+                
+                
+                <!-- Post Title -->
+				<h1 class="posttitle">Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 1]</h1> 
+                
+			</div>
+
+			<!-- Post Featured Image -->
+			
+                
+                    <img class="featured-image img-fluid" src="/assets/images/sinatra-crud-postgres/page-1.png" alt="Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 1]">
+                
+            
+			<!-- End Featured Image -->
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>Setelah beberapa tahun blog ini tak terurus, saya mencoba menghidupkan kembali blog ini tentunya dengan topik yang saya rasa cukup menarik, yang akan saya tulis disela-sela kesibukan saya mengerjakan skripsi wkwkwk. Kalau gak salah tulisan terakhir itu tanggal 30 November 2016, udah lama banget yah.</p>
+
+<p>Jadi beberapa hari yang lalu saya mendapatkan <em>contract</em> pertama saya di <a href="https://www.upwork.com/o/profiles/users/_~01c156fb88f920717c/">upwork</a> (Horeee). 
+Di dalam contractnya saya diminta untuk membimbing si client untuk membuat sebuah aplikasi web sederhana menggunakan web framework <a href="http://sinatrarb.com">sinatra</a>, mulai dari awal pembuatan project sampai bisa di deploy ke <a href="https://sinatra-crud-postgresql.herokuapp.com">heroku</a>.</p>
+
+<p>Nekat aja sih, padahal saya belum pernah membuat aplikasi web pakai sinatra sebelumnya. 
+Tapi yah mumpung dapat kesempatan bagus, lumayan bisa belajar terus dapat bayaran pula wkwkwk.</p>
+
+<p>Di tulisan kali ini saya ini berbagi bagaimana cara membuat sebuah aplikasi CRUD sederhana menggunakan framework Sinatra dan RDBMS Postgresql.</p>
+
+<p>Tulisan ini nantinya terdiri dari 4 part:</p>
+<ul>
+  <li>Part 1 - Basic Sinatra</li>
+  <li><a href="/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2">Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record</a></li>
+  <li><a href="/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3">Part 3 - CRUD dan View</a></li>
+  <li><a href="/2018/11/09/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-4-end">Part 4 - Push project ke heroku</a></li>
+</ul>
+
+<p>Okey kita mulai saja.</p>
+
+<p>Pertama kita buat sebuah folder project bernama <code class="language-plaintext highlighter-rouge">sinatra-crud-postgresql</code>.</p>
+
+<pre>$ mkdir sinatra-crud-postgresql</pre>
+
+<p>Kemudian di dalam folder project kita tadi kita buat lagi 3 folder yakni <code class="language-plaintext highlighter-rouge">config</code>, <code class="language-plaintext highlighter-rouge">models</code> dan <code class="language-plaintext highlighter-rouge">views</code>.</p>
+
+<pre>
+$ cd sinatra-crud-postgresql
+$ mkdir config models views
+</pre>
+<p>Struktur foldernya seperti pada gambar dibawah ini.</p>
+
+<p><img src="https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-25_23-09-41.png" alt="Create project" /></p>
+
+<p>Setelah itu kita buat file baru bernama <code class="language-plaintext highlighter-rouge">Gemfile</code> di root project kita dan tambahkan kode berikut ini</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Gemfile</span>
+<span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+
+<span class="n">ruby</span> <span class="s2">"2.5.1"</span>
+
+<span class="n">gem</span> <span class="s2">"sinatra"</span>
+</code></pre></div></div>
+
+<p>Setelah itu kita jalankan perintah</p>
+<pre>$ bundle install</pre>
+<p>Untuk menginstall <code class="language-plaintext highlighter-rouge">gem</code> yang telah kita deklarasikan di <code class="language-plaintext highlighter-rouge">Gemfile</code>.</p>
+
+<p>Kemudian kita buat file baru dengan nama <code class="language-plaintext highlighter-rouge">app.rb</code>, file ini nantinya akan menjadi file utama dari aplikasi sinatra yang akan kita buat.</p>
+
+<p>Struktur folder project kita sekarang seperti pada gambar dibawah ini.</p>
+
+<p><img src="https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-26_05-26-09.png" alt="Struktur baru sinatra" /></p>
+
+<p>Kemudian pada file <code class="language-plaintext highlighter-rouge">app.rb</code> tambahkan kode berikut ini.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app.rb</span>
+<span class="nb">require</span> <span class="s2">"sinatra"</span>
+
+<span class="n">get</span> <span class="s1">'/'</span> <span class="k">do</span>
+  <span class="s2">"Hello World!"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>Penjelasan dari baris kode diatas adalah pertama kita akan memanggil <em>library</em> sinatra menggunakan syntax <code class="language-plaintext highlighter-rouge">require "sinatra"</code>, kemudian kita mendeklarasikan sebuah route baru di aplikasi sinatra kita. Ketika ada <code class="language-plaintext highlighter-rouge">GET</code> request ke alamat “<code class="language-plaintext highlighter-rouge">/</code>”, maka aplikasi sinatra kita akan memberikan <em>response</em> berupa text <em>“Hello World!”</em>.</p>
+
+<p>Untuk melihat hasilnya jalankan perintah</p>
+<pre>$ ruby app.rb</pre>
+
+<p><img src="https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-25_23-30-52.png" alt="Server Pertama" /></p>
+
+<p>Buka browser teman-teman, dan akses <code class="language-plaintext highlighter-rouge">http://localhost:4567</code>, jika berhasil maka akan tampil seperti pada gambar dibawah ini</p>
+
+<p><img src="https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-25_23-31-42.png" alt="sinatra hello world" /></p>
+
+<p>Yeay, selamat kita telah berhasil membuat aplikasi web minimalis kita menggunakan sinatra.</p>
+
+<p>Ditulisan berikutnya saya akan membahas bagaimana cara menghubungkan aplikasi sinatra kita ke database postgresql menggunakan active record.</p>
+
+<p>Terima kasih sudah meluangkan waktunya untuk membaca tulisan saya ini.</p>
+
+<p>Salam Rubyist!!</p>
+
+			</div>
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2018-10-25">25 Oct 2018</time></span>           
+                
+                </small>
+            </p>
+            
+			<!-- Post Categories -->
+			<div class="after-post-tags">
+				<ul class="tags">
+                    
+                    
+                    <li>
+                     <a href="/category/activerecord/">activerecord</a>
+                    </li>
+                    
+                    <li>
+                     <a href="/category/postgresql/">postgresql</a>
+                    </li>
+                    
+                    <li>
+                     <a href="/category/ruby/">ruby</a>
+                    </li>
+                    
+                    <li>
+                     <a href="/category/sinatra/">sinatra</a>
+                    </li>
+                    
+                    <li>
+                     <a href="/category/tutorial/">tutorial</a>
+                    </li>
+                    
+				</ul>
+			</div>
+			<!-- End Categories -->
+            
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="https://achmiral.id/2016/11/30/cara-menjalankan-aplikasi-rails-5-dan-mysql-pada-docker-container"> &laquo; Cara Menjalankan Aplikasi Rails 5 + MySQL Pada Docker Container</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="https://achmiral.id/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2">Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 2] &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+  
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-2"></div>
+            <div class="col-md-9 mx-auto">              
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'achmiral-id'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+                
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+</div>
+
+<!-- Bottom Alert Bar
+================================================== -->
+<!-- <div class="alertbar">
+	<div class="container text-center">
+		<span><img src="/assets/images/miral-achmed-1.png" alt=""> &nbsp; Never miss a <b>story</b> from us, subscribe to our newsletter</span>
+        <form action="" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate" target="_blank" novalidate>
+            <div class="mc-field-group">
+            <input type="email" placeholder="Email" name="EMAIL" class="required email" id="mce-EMAIL" autocomplete="on" required>
+            <input type="submit" value="Subscribe" name="subscribe" class="heart">
+            </div>
+        </form>
+	</div>
+</div>  -->   
+    
+</div><!-- /.container>
+    
+<!-- Categories Jumbotron
+================================================== -->
+<!-- <div class="jumbotron fortags">
+	<div class="d-flex h-100">
+		<div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-flex align-items-center justify-content-center h-100">
+			 <h2 class="d-md-block d-none align-self-center">Explore →</h2>
+            </div>
+		</div>
+		<div class="col-md-8 align-self-center text-center">
+            
+          
+             
+              <a href="/category/Docker">Docker (2)</a>
+             
+              <a href="/category/tutorial">Tutorial (7)</a>
+             
+              <a href="/category/Ruby">Ruby (1)</a>
+             
+              <a href="/category/Ruby on Rails">Ruby on rails (1)</a>
+             
+              <a href="/category/Container">Container (1)</a>
+             
+              <a href="/category/ruby">Ruby (4)</a>
+             
+              <a href="/category/sinatra">Sinatra (4)</a>
+             
+              <a href="/category/activerecord">Activerecord (4)</a>
+             
+              <a href="/category/postgresql">Postgresql (4)</a>
+             
+              <a href="/category/jekyll">Jekyll (1)</a>
+             
+              <a href="/category/turbolinks">Turbolinks (1)</a>
+            
+          
+        
+
+		</div>
+	</div>
+</div>
+  -->
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                 Copyright © 2021 Miral Achmed 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+   
+</div> <!-- /.site-content>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v3.2'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="182341549350497">
+</div>
+    
+<script src="/assets/js/jquery.min.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+<script src="/assets/js/mediumish.js"></script>
+
+<script id="dsq-count-scr" src="//achmiral-id.disqus.com/count.js"></script>
+</body>
+</html>

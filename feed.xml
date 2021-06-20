@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description>My Simple Personal Blog</description>
+    <link>https://achmiral.id/</link>
+    <atom:link href="https://achmiral.id/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 20 Jun 2021 10:54:21 +0000</pubDate>
+    <lastBuildDate>Sun, 20 Jun 2021 10:54:21 +0000</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title>Tingkatkan Kecepatan Navigasi Blog Anda Dengan Turbolinks</title>
+        <description>&lt;p&gt;Halo teman-teman, kali ini saya ingin berbagi tutorial mengenai update terbaru pada blog ini. Pada beberapa waktu yang lalu saya menambahkan &lt;strong&gt;Turbolinks&lt;/strong&gt; pada blog ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/turbolinks/turbolinks&quot;&gt;Turbolinks&lt;/a&gt; adalah pustaka Javascript yang digunakan untuk meningkatkan performa navigasi pada Website / Blog Anda layaknya &lt;em&gt;Single Page Application (SPA)&lt;/em&gt;. Versi terbaru turbolinks adalah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5.2.0&lt;/code&gt; (ketika tulisan ini dibuat).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Tutorial ini dibuat untuk teman-teman yang menggunakan &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;langkah---langkah&quot;&gt;Langkah - langkah:&lt;/h4&gt;
+
+&lt;h5 id=&quot;1-download-turbolinks-versi-terbaru&quot;&gt;1. Download Turbolinks Versi Terbaru&lt;/h5&gt;
+&lt;p&gt;Download Turbolinks Versi Terbaru pada link berikut ini &lt;a href=&quot;https://github.com/turbolinks/turbolinks/archive/v5.2.0.zip&quot;&gt;Turbolinks v5.2.0&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&quot;2-tambahkan-turbolinks-ke-folder-assets&quot;&gt;2. Tambahkan Turbolinks ke folder assets&lt;/h5&gt;
+&lt;p&gt;Ekstrak dan copy file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;turbolinks.js&lt;/code&gt; yang terdapat pada folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dist/turbolinks.js&lt;/code&gt;, ke folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assets/js/turbolinks.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;3-tambahkan-script-tag&quot;&gt;3. Tambahkan script tag&lt;/h5&gt;
+&lt;p&gt;Tambahkan script tag pada file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt;, di dalam tag &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ site.baseurl }}/assets/js/turbolinks.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;4-modifikasi-file-js&quot;&gt;4. Modifikasi file JS&lt;/h5&gt;
+&lt;p&gt;Lakukan modifikasi pada kode javascript yang disediakan oleh template yang Anda gunakan seperti berikut ini. Pada blog ini menggunakan template &lt;a href=&quot;https://github.com/wowthemesnet/mediumish-theme-jekyll&quot;&gt;&lt;em&gt;Mediumish&lt;/em&gt;&lt;/a&gt;, jadi yang modif adalah file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assets/js/mediumish.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// assets/js/mediumish.js&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Before&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// mediumish js code&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// After&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// mediumish js code&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;jQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;turbolinks:load&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;4-done&quot;&gt;4. Done!&lt;/h5&gt;
+&lt;p&gt;Selesai, saatnya deploy ke github pages :grinning:&lt;/p&gt;
+
+&lt;p&gt;Terima kasih untuk teman-teman yang sudah meluangkan waktunya untuk membaca tulisan ini, semoga bisa bermanfaat. Salam Rubyist!! :smile: :smile: :smile:&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;referensi&quot;&gt;Referensi:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://github.com/turbolinks/turbolinks&lt;/li&gt;
+  &lt;li&gt;https://blog.appsignal.com/2018/05/23/speeding-up-your-apps-navigation-with-turbolinks.html&lt;/li&gt;
+  &lt;li&gt;http://patrickoscity.de/blog/turbolinks-with-jekyll&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+        <link>https://achmiral.id/2019/01/26/tingkatkan-kecepatan-navigasi-blog-anda-dengan-turbolinks</link>
+        <guid isPermaLink="true">https://achmiral.id/2019/01/26/tingkatkan-kecepatan-navigasi-blog-anda-dengan-turbolinks</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>turbolinks</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 4] END</title>
+        <description>&lt;p&gt;Halo teman-teman sebelum weekend, yuk belajar bareng membuat &lt;strong&gt;Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Di &lt;a href=&quot;/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3&quot;&gt;part 3&lt;/a&gt; kita sudah belajar bagaimana cara menambahkan fungsi &lt;strong&gt;CRUD&lt;/strong&gt; dan view pada aplikasi kita. Di part 4 atau part terakhir ini, kita akan belajar bagaimana mempublish aplikasi sinatra kita ke &lt;a href=&quot;https://id.heroku.com/login&quot;&gt;heroku&lt;/a&gt; agar bisa di akses secara online.&lt;/p&gt;
+
+&lt;p&gt;Sedekar informasi buat teman-teman yang baru berkunjung di blog ini. Tulisan ini terdiri dari 4 part, berikut ini daftar setiap part nya:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1&quot;&gt;Part 1 - Basic Sinatra&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2&quot;&gt;Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3&quot;&gt;Part 3 - CRUD dan View&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Part 4 - Push project ke heroku&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sebelum kita mulai belajar, pastikan struktur direktori projek aplikasi sinatra teman-teman sama seperti gambar di bawah ini ya. Kalau belum sama silahkan membaca kembali part-part sebelumnya, kemungkinan ada langkah yang terlewatkan.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_22-36-21.png&quot; alt=&quot;Struktur Direktori&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Untuk teman-teman yang belum memiliki akun heroku, teman-teman bisa mengklik link registrasi &lt;a href=&quot;https://signup.heroku.com/login&quot;&gt;disini&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Kalau teman-teman sudah selesai registrasi akun heroku, kita bisa mulai belajarnya.&lt;/p&gt;
+
+&lt;p&gt;Pertama-tama teman-teman harus menginstall program &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-cli#download-and-install&quot;&gt;&lt;strong&gt;heroku-cli&lt;/strong&gt;&lt;/a&gt; di komputer teman-teman, agar kita bisa menjalankan perintah-perintah heroku melalui terminal.&lt;/p&gt;
+
+&lt;p&gt;Kalau sudah terinstall teman-teman bisa mengeceknya dengan menggunakan perintah.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ heroku -v
+&lt;/pre&gt;
+
+&lt;p&gt;Jika berhasil terinstall maka akan tampil seperti berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_05-57-13.png&quot; alt=&quot;Struktur Direktori&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ada beberapa persiapan yang perlu kita lakukan agar bisa mempublish aplikasi sinatra kita ke heroku.&lt;/p&gt;
+
+&lt;p&gt;Di heroku aplikasi ruby berbasis web dikenali sebagai aplikasi berbasis rack atau &lt;a href=&quot;https://devcenter.heroku.com/articles/rack&quot;&gt;rack based application&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Untuk menjalankan aplikasi sinatra atau aplikasi berbasis rack di heroku, kita perlu membuat sebuah file bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config.ru&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pada root direktori project aplikasi sinatra kita, buatlah sebuah file baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config.ru&lt;/code&gt;, kemudian tambahkan kode berikut ini&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# config.ru&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./app'&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kita dapat mencoba menjalankan aplikasi berbasis rack kita secara local dengan perintah berikut.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ rackup -p 3000
+&lt;/pre&gt;
+
+&lt;p&gt;Maka akan tampil seperti berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-14-33.png&quot; alt=&quot;Struktur Direktori&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Bisa dilihat bahwa output dari perintah tersebut terlihat mirip dengan output perintah berikut ini.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ ruby app.rb -p 3000
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-14-22.png&quot; alt=&quot;Struktur Direktori&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Aplikasi sinatra kita bisa dijalankan dengan menggunakan perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby app.rb -p 3000&lt;/code&gt; maupun &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rackup -p 3000&lt;/code&gt;, tetapi pada heroku kita akan menggunakan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rackup&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita buat file baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Procfile&lt;/code&gt;, file ini berisi perintah yang akan di eksekusi oleh heroku untuk menlajankan aplikasi kita.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Procfile&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;web: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rackup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ru&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$PORT&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Setelah itu pada terminal teman-teman jalankan perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;heroku login&lt;/code&gt;, untuk melakukan login ke service heroku melalui terminal.&lt;/p&gt;
+
+&lt;p&gt;Ketika berhasil login kemudian jalankan perintah berikut ini untuk membuat sebuah app baru pada akun heroku teman-teman.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ heroku create simple-crud-sinatra-postgresql
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;simple-crud-sinatra-postgresql&lt;/code&gt; merupakan nama dari aplikasi sinatra kita di heroku. Jika berhasil maka akan tampil seperti gambar berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-33-37.png&quot; alt=&quot;Struktur Direktori&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian kita commit project kita ke git, dengan menggunakan perintah berikut.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ git add -A
+  $ git commit -  m &quot;Perisapan publish heroku&quot;
+&lt;/pre&gt;
+
+&lt;p&gt;Seperti yang ditunjukkan oleh gambar berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-37-02.png&quot; alt=&quot;Struktur Direktori&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita upload projek kita ke heroku dengan menggunakan perintah berikut.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ git push heroku master
+&lt;/pre&gt;
+
+&lt;p&gt;Kita tunggu sampai aplikasi sinatra kita berhasil di upload ke heroku, seperti berikut.&lt;/p&gt;
+
+&lt;script id=&quot;asciicast-bQmvKiFwIBrK078Nf2yZsLztS&quot; src=&quot;https://asciinema.org/a/bQmvKiFwIBrK078Nf2yZsLztS.js&quot; async=&quot;&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Ketika sudah berhasil di upload, teman-teman bisa mengakses alamat yang diberikan oleh heroku yakni &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://simple-crud-sinatra-postgresql.herokuapp.com/&lt;/code&gt;. Kita juga bisa mengakses alamat tersebut dengan menggunakan perintah berikut.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ heroku open
+&lt;/pre&gt;
+
+&lt;p&gt;Maka akan secara otomatis membuka browser dan mengakses alamat aplikasi sinatra kita yang berada di heroku, seperti gambar berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-45-18.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ketika kita mengakses path &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts&lt;/code&gt;, akan tampil &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internal server error&lt;/code&gt;. Ini terjadi karena database untuk aplikasi sinatra kita belum dibuat. Untuk membuat database kita menggunakan perintah berikut.&lt;/p&gt;
+
+&lt;pre&gt;
+  $ heroku run rake db:migrate
+&lt;/pre&gt;
+
+&lt;p&gt;Jika berhasil maka akan tampil seperti pada gambar dibawah ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-49-47.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian kita coba refresh halaman &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts&lt;/code&gt; sebelumnya, maka akan tampil tabel kosong, karena kita belum menambahkan post. Seperti gambar berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-52-18.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kita dapat menambahkan post dengan mengakses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts/new&lt;/code&gt;. Pada input title kita ketikkan “Greeting” dan pada input content kita ketikkan “Hello World!”, seperti pada gambar berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-54-33.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian klik tombol &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;create post&lt;/code&gt;, jika berhasil dibuat maka akan diredirect ke halaman &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts&lt;/code&gt;, seperti pada gambar berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-54-41.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita coba menambahkan satu post lagi dengan title “Salam” dan content “Halo Dunia!”. Maka ketika mengakses halaman &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts&lt;/code&gt; akan tampil seperti berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-55-09.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kita akan coba menghapus post pertama dengan mengklik tombol &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt;. Jika berhasil terhapus maka akan tampil seperti berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_06-55-17.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selanjutkan kita coba untuk mengedit post yang tersisa. Caranya, kita klik pada bagian title agar kita berpindah ke halaman detail post, kemudian kita klik tombol &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;edit&lt;/code&gt;. Maka akan tampil sebagai berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_07-03-26.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian klik tombol &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;edit post&lt;/code&gt;, jika berhasil maka akan diredirect ke halaman &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts/:id&lt;/code&gt; dan akan tampil sebagai berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_07-03-39.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Jika kita kembali ke halaman &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts&lt;/code&gt; akan tampil sebagai berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-02_07-03-45.png&quot; alt=&quot;Live app&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yeaayy, selamat teman-teman kita telah berhasil mempublish aplikasi sinatra kita ke heroku.&lt;/p&gt;
+
+&lt;p&gt;Terima kasih teman-teman yang sudah meluangkan waktunya untuk belajar bersama saya di seri tutorial membuat &lt;strong&gt;Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql&lt;/strong&gt; ini, semoga bisa bermanfaat buat teman-teman.&lt;/p&gt;
+
+&lt;p&gt;Jangan lupa dilike facebook fanpage blog ini &lt;a href=&quot;https://www.facebook.com/achmiral.id&quot;&gt;disini&lt;/a&gt;, agar tidak ketinggalan tulisan-tulisan berikutnya.&lt;/p&gt;
+
+&lt;p&gt;Salam Rubyist!!&lt;/p&gt;
+
+&lt;h3 id=&quot;github-project&quot;&gt;Github Project&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://github.com/achmiral/simple-crud-sinatra-postgresql&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
+        <link>https://achmiral.id/2018/11/09/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-4-end</link>
+        <guid isPermaLink="true">https://achmiral.id/2018/11/09/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-4-end</guid>
+        
+        
+        <category>ruby</category>
+        
+        <category>sinatra</category>
+        
+        <category>activerecord</category>
+        
+        <category>postgresql</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 3]</title>
+        <description>&lt;p&gt;Halo teman-teman kembali lagi di tulisan saya tentang belajar membuat &lt;strong&gt;Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sebelumnya di &lt;a href=&quot;/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2&quot;&gt;part 2&lt;/a&gt; kita belajar bagaimana mengubungkan aplikasi sinarta kita ke database postgresql menggunakan &lt;em&gt;activerecord&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Di part 3 ini kita akan belajar membuat &lt;strong&gt;Create Read Update Delete&lt;/strong&gt; pada aplikasi sinatra kita, beserta tampilan view nya masing-masing.&lt;/p&gt;
+
+&lt;p&gt;Sedekar informasi buat teman-teman yang baru berkunjung di blog ini. Tulisan ini terdiri dari 4 part, berikut ini daftar setiap part nya:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1&quot;&gt;Part 1 - Basic Sinatra&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2&quot;&gt;Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Part 3 - CRUD dan View&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/11/09/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-4-end&quot;&gt;Part 4 - Push project ke heroku&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sebelum mulai, pastikan struktur project teman-teman seperti pada gambar dibawah ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-27_09-05-42.png&quot; alt=&quot;struktur project&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pertama kita akan perlu merubah root route aplikasi sinatra kita menjadi sebagai berikut.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sinatra'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sinatra/activerecord&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./models/post&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;Welcome to Sinatra App&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kemudian jalankan aplikasi sinatra kita menggunakan perintah berikut.&lt;/p&gt;
+&lt;pre&gt;
+  $ ruby app.rb
+&lt;/pre&gt;
+
+&lt;p&gt;Ketika kita mengakses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567&lt;/code&gt; atau mengakses root aplikasi sinatra kita, maka akan tampil sebagai berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_19-50-00.png&quot; alt=&quot;root route&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian kita buat &lt;em&gt;route&lt;/em&gt; baru &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts&lt;/code&gt;, untuk menampilkan semua &lt;strong&gt;post&lt;/strong&gt; yang ada di database. Buka file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt;, lalu tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app.rb&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/posts'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@posts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Untuk mengambil seluruh data post yang ada di database&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;erb&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:posts&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# fungsi untuk memanggil file views/posts.erb&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Tanda &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;...&lt;/code&gt; diatas adalah untuk mewakilkan baris-baris kode yang sebelumnya.&lt;/p&gt;
+
+&lt;p&gt;Kita akan menggunakan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;erb&lt;/code&gt; atau &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;embeded ruby&lt;/code&gt; sebagai template engine untuk view pada aplikasi sinatra kita.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;erb&lt;/code&gt; (&lt;em&gt;Embeded ruby&lt;/em&gt;) adalah sebuah template engine yang dapat kita gunakan ketika ingin menambahkan dan mengeksekusi kode-kode ruby pada view atau pada file HTML. Singkatnya, file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;erb&lt;/code&gt; tersebut terlebih dahulu diproses di server  untuk men-generate file HTML, kemudian file HTML tersebut akan dikirim ke client dan ditampilkan di browser.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sinatra akan secara default mendeteksi direktori &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;views&lt;/code&gt; sebagai direktori untuk menyimpan file-file view pada aplikasi sinatra kita.&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya buatlah sebuah file baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts.erb&lt;/code&gt; di dalam direktori &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;views&lt;/code&gt;, dan tambahkan kode berikut.&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- views/posts.erb --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;table&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;table&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;thead&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Content&lt;span class=&quot;nt&quot;&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/thead&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;tbody&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@posts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/tbody&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Restart aplikasi sinatra kita dengan cara menekan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl + c&lt;/code&gt; pada terminal tempat kita menjalankan aplikasi sinatra kita, kemudian jalankan lagi perintah&lt;/p&gt;
+
+&lt;pre&gt;
+  $ ruby app.rb
+&lt;/pre&gt;
+
+&lt;p&gt;Setelah itu buka browser teman-teman dan akses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567/posts&lt;/code&gt;, akan tampil seperti pada gambar dibawah ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_20-03-06.png&quot; alt=&quot;posts route&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kita akan menambahkan framework css &lt;a href=&quot;http://getbootstrap.com/&quot;&gt;bootstrap&lt;/a&gt; untuk mempercantik tampilan view aplikasi sinatra kita.&lt;/p&gt;
+
+&lt;p&gt;Untuk menambahkan bootstrap, kita perlu membuat sebuah file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout.erb&lt;/code&gt; pada direktori &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;views&lt;/code&gt;. Nantinya file ini akan menjadi layout untuk setiap file views pada aplikasi kita.&lt;/p&gt;
+
+&lt;p&gt;Buatlah filebaru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout.erb&lt;/code&gt;, tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- views/layout.erb --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Required meta tags --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Bootstrap CSS --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Sinatra App!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Optional JavaScript --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- jQuery first, then Popper.js, then Bootstrap JS --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://code.jquery.com/jquery-3.3.1.slim.min.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bisa dilihat pada tag &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;div.container&lt;/code&gt; kita menambahkan syntax ruby &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;, syntax ini akan menunjukkan lokasi tempat menyisipkan kode-kode yang berasal dari view.&lt;/p&gt;
+
+&lt;p&gt;Seletah itu, buka browser teman-teman dan akses kembali &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567/posts&lt;/code&gt;, Maka akan tampil seperti gambar berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_20-32-41.png&quot; alt=&quot;table bootstrap&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita akan menambahkan fungsi CREATE pada aplikasi sinatra kita.&lt;/p&gt;
+
+&lt;p&gt;Untuk menambahkan fungsi CREATE kita memerlukan 2 route baru, yakni&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts/new&lt;/code&gt; dengan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get&lt;/code&gt;, untuk menampilkan form membuat post baru&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts&lt;/code&gt; dengan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post&lt;/code&gt;, untuk melakukan proses insert ke database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Buka file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt; dan tambahkan kode berikut.&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app.rb&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/posts/new'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Membuat sebuah objek post baru&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;erb&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new_post&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# memanggil file view new_post.erb&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/posts'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Membuat objek @post dengan atribut yang di peroleh dari form input new_post.erb&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;redirect&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/posts'&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;erb&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new_post&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pada kode diatas kita membutuhkan sebuah file view baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new_post.erb&lt;/code&gt;. Buatlah sebuah file baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new_post.erb&lt;/code&gt; pada direkroti &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;views&lt;/code&gt; dan tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- views/new_post.erb --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;New Post&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;action=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-group&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post[title]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-control&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-group&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Content&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;textarea&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post[content]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-control&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cols=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rows=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/textarea&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-sm&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Create Post&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-danger btn-sm&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Back&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Jika diperhatikan pada attribut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; pada input field title bernilai &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post[title]&lt;/code&gt; dan  pada input field content bernilai &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post[content]&lt;/code&gt;. Nilai ini merupakan konvensi dari &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;erb&lt;/code&gt; agar data dari form yang diinputkan akan menjadi sebuah data &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hash&lt;/code&gt;. Misalnya ketika kita menginputkan “&lt;strong&gt;Greeting&lt;/strong&gt;” pada input field title dan “&lt;strong&gt;Hello World!&lt;/strong&gt;” pada input field content, akan menjadi seperti berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;title: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Greeting&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;content: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;Greeting&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;Hello World!&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Selanjutnya jangan lupa restart aplikasi sinatra teman-teman, kemudian buka browser dan akses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567/posts/new&lt;/code&gt;. Dan inputkan title dan content sesuai keinginan teman-teman, dalam contoh ini saya menginputkan “Salam” dan “Halo Dunia!”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_21-09-06.png&quot; alt=&quot;new post&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian klik button &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Create Post&lt;/code&gt;, jika berhasil maka akan di redirect ke halaman &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts&lt;/code&gt;. Seperti pada gambar dibawah ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_21-10-32.png&quot; alt=&quot;new post&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita akan menambahkan fungsi READ pada aplikasi sinatra kita. Route yang dibutukan untuk fungsi ini adalah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts/:id&lt;/code&gt; dengan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get&lt;/code&gt;, dimana &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:id&lt;/code&gt; adalah id dari post yang akan kita read dari database.&lt;/p&gt;
+
+&lt;p&gt;Untuk menambahkan fungsi READ, buka file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt; kemudian tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app.rb&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/posts/:id'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;erb&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:post_detail&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kemudian kita buat sebuah file view baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post_detail.erb&lt;/code&gt; pada direktori views dan tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- views/post_detail.erb --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts/&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/edit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-sm btn-primary&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Edit&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-sm btn-danger&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Back&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kemudian kita modifikasi view &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts.erb&lt;/code&gt;, kita tambahkan link untuk menuju ke halaman post detail, seperti berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- views/posts.erb --&amp;gt;&lt;/span&gt;
+
+...
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@posts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts/&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Kemudian buka browser teman-teman dan akses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567/posts&lt;/code&gt;, akan tampil seperti pada gambar berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_21-44-07.png&quot; alt=&quot;list post new&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Teman-teman coba klik pada bagian title salah satu post. Maka akan tampil seperti gambar berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_21-41-36.png&quot; alt=&quot;list post new&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita akan menambahkan fungsi UPDATE pada aplikasi sinatra kita.&lt;/p&gt;
+
+&lt;p&gt;Hampir sama seperti pada fungsi CREATE, kita membutuhkan 2 route baru, yakni&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts/:id/edit&lt;/code&gt; dengan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get&lt;/code&gt; untuk menampilkan form edit post&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts/:id&lt;/code&gt; dengan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;put&lt;/code&gt; untuk memproses update post ke database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Buka file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt; kemudian tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app.rb&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/posts/:id/edit'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;erb&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:post_edit&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;put&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/posts/:id'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;redirect&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/posts/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;erb&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:post_edit&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kemudian kita buat sebuah file view baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post_edit.erb&lt;/code&gt; pada direktori &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;views&lt;/code&gt; dan tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- views/post_edit.erb --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Edit Post&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;action=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts/&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hidden&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_method&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;put&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-group&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post[title]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-control&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Title&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-group&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;for=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Content&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;textarea&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post[content]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;form-control&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cols=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;30&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rows=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/textarea&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-sm&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Edit Post&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-danger btn-sm&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Back&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Seperti biasa jangan lupa restart aplikasi sinatra teman-teman setiap kali melakukan perubahan pada file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Kemudian buka browser teman-teman dan akses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567/posts&lt;/code&gt;, lalu klik salah title salah satu post, kemudian klik tombol &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;edit post&lt;/code&gt;. Maka akan tampil form seperti dibawah ini. Kita akan merubah content menjadi &lt;strong&gt;Hello Dunia!&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_21-52-53.png&quot; alt=&quot;edit post form&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ketika proses edit berhasil maka akan tampil halam detail post seperti pada gambar dibawah ini,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_21-53-03.png&quot; alt=&quot;edit post form&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita akan menambahkan fungsi terakhir yakni DELETE.&lt;/p&gt;
+
+&lt;p&gt;Untuk fungsi DELETE kita hanya memerlukan satu route baru yakni &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/posts/:id&lt;/code&gt; dengan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Buka file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt; dan tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app.rb&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/posts/:id'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;destroy&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;redirect&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/posts&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kemudian kita modifikasi file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts.erb&lt;/code&gt;, kita akan menambahkan kolom baru yang berisi tombol &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Buka file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts.erb&lt;/code&gt; dan ubahlah menjadi seperti dibawah ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- views/posts.erb --&amp;gt;&lt;/span&gt;
+...
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts/&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;td&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;action=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/posts/&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_method&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;delete&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-xs btn-danger&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kemudian buka browser teman-teman dan akses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567/posts&lt;/code&gt; maka akan tampil seperti berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_22-07-22.png&quot; alt=&quot;Post list&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cobalah untuk mengklik salah satu tombol delete, ketika berhasil di hapus maka akan di redirect ke tampilan berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_22-07-32.png&quot; alt=&quot;Post list&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yeaay, selamat kita berhasil menambahkan fungsi CRUD beserta view pada aplikasi sinatra kita.&lt;/p&gt;
+
+&lt;p&gt;Sebelum lanjut ke part berikutnya, pastikan struktur folder project teman-teman sama seperti gambar berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-11-01_22-36-21.png&quot; alt=&quot;Post list&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ditulisan berikutnya kita akan belajar bagaimana mempublish aplikasi sinatra kita ke heroku.&lt;/p&gt;
+
+&lt;p&gt;Terima kasih sudah meluangkan waktunya untuk membaca tulisan saya ini.&lt;/p&gt;
+
+&lt;p&gt;Salam Rubyist!!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 02 Nov 2018 00:00:00 +0000</pubDate>
+        <link>https://achmiral.id/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3</link>
+        <guid isPermaLink="true">https://achmiral.id/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3</guid>
+        
+        
+        <category>sinatra</category>
+        
+        <category>ruby</category>
+        
+        <category>activerecord</category>
+        
+        <category>postgresql</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 2]</title>
+        <description>&lt;p&gt;Halo teman-teman, di tulisan sebelumnya kita sudah belajar bagaimana membuat aplikasi sederhana menggunakan sinatra.
+Untuk yang belum baca bisa dibaca &lt;a href=&quot;/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1&quot;&gt;disini&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Di Part 2 ini, kita akan mempelajari bagaimana menghubungkan aplikasi sinatra yang sudah kita buat di &lt;a href=&quot;/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1&quot;&gt;Part 1&lt;/a&gt; ke database Postgresql menggunakan activerecord.&lt;/p&gt;
+
+&lt;p&gt;Sedekar informasi buat teman-teman yang baru berkunjung di blog ini. Tulisan ini terdiri dari 4 part, berikut ini daftar setiap part nya:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1&quot;&gt;Part 1 - Basic Sinatra&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://localhost:4000/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3&quot;&gt;Part 3 - CRUD dan View&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/11/09/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-4-end&quot;&gt;Part 4 - Push project ke heroku&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okey langsung saja kita mulai.&lt;/p&gt;
+
+&lt;p&gt;Langkah pertama, tambahkan beberapa gem yang dibutuhkan.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Gemfile&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://rubygems.org&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2.5.1&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sinatra&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;activerecord&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sinatra-activerecord&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pg&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rake&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tux&quot;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kemudian jalankan perintah&lt;/p&gt;
+
+&lt;pre&gt;$ bundle install&lt;/pre&gt;
+
+&lt;p&gt;Selanjutnya buat file konfigurasi database pada folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config&lt;/code&gt; bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;database.yml&lt;/code&gt;.
+Kemudian tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#config/database.yml&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;development&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;postgresql&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;unicode&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sinatra-crud_development&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# ganti dengan nama database yang diinginkan&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;pool&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;localhost&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# ganti dengan username postgresql teman-teman&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;root&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# ganti dengan password untuk username postgresql teman-teman&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;production&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;postgresql&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;unicode&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV['DATABASE_HOST'] %&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV['DATABASE_NAME'] %&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;pool&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV['DATABASE_USERNAME'] %&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV['DATABASE_PASSWORD'] %&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Konfigurasi database diatas digunakan untuk environtment development dan production. Pada konfigurasi production kita menggunakan &lt;em&gt;environtment variabel&lt;/em&gt;, 
+nilai-nilai ini nantinya akan diset secara otomatis ketika kita push project kita ke heroku.&lt;/p&gt;
+
+&lt;p&gt;Langkah selanjutnya kita akan membuat sebuah kelas model bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Post&lt;/code&gt;, dengan cara membuat file baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post.rb&lt;/code&gt; pada folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;models&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# models/post.rb&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Setelah itu buat sebuah file baru lagi bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Rakefile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Rakefile&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sinatra/activerecord&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sinatra/activerecord/rake&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./app&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Rakefile&lt;/code&gt; dibutuhkan agar kita dapat menggunakan perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rake&lt;/code&gt; pada project kita.&lt;/p&gt;
+
+&lt;p&gt;Untuk membuat database dapat menggunakan perintah berikut.&lt;/p&gt;
+
+&lt;pre&gt;$ rake db:create&lt;/pre&gt;
+
+&lt;p&gt;Perintah tersebut akan membuat sebuah database baru sesuai dengan konfigurasi yang ada pada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config/database.yml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Jika database berhasil dibuat maka akan tampil seperti gambar dibawah ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-27_07-38-40.png&quot; alt=&quot;Create DB&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita akan membuat sebuah file &lt;em&gt;database migration&lt;/em&gt; baru untuk membuat tabel &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Posts&lt;/code&gt; yang kita beri nama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;create_posts&lt;/code&gt;. Caranya jalankan perintah berikut ini.&lt;/p&gt;
+
+&lt;pre&gt;$ rake db:create_migration NAME=create_posts&lt;/pre&gt;
+
+&lt;p&gt;Jika berhasil maka akan tampil seperti pada gambar dibawah ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-27_07-49-06.png&quot; alt=&quot;Create DB Migration&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian kita edit file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;20181027004848_create_posts.rb&lt;/code&gt;, tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# db/migrate/20181027004848_create_posts.rb&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreatePosts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:posts&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:title&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Untuk membuat kolom title bertipe varchar&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:content&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Untuk membuat kolom content bertipe text&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;timestamps&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;null: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Untuk membuat kolom timestamps&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Jalankan perintah berikut ini untuk menjalankan &lt;em&gt;database migration&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;$ rake db:migrate&lt;/pre&gt;
+
+&lt;p&gt;Jika berhasil maka tampil seperti gambar berikut dan tabel &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts&lt;/code&gt; berhasil dibuat.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-27_07-54-13.png&quot; alt=&quot;DB Migration Create posts Table&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Untuk menambahkan data ke database kita dapat menggunakan console &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tux&lt;/code&gt;, mirip seperti &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rails console&lt;/code&gt; pada Ruby on Rails.&lt;/p&gt;
+
+&lt;p&gt;Kita akan menambahkan satu data &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post&lt;/code&gt; dengan title “Greeting” dan content “Hello World!”. Seperti pada gambar berikut.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-27_08-44-50.png&quot; alt=&quot;Add Data&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sebelum lanjut ke tahap pengujian, pastikan struktur folder project teman-teman sama seperti gambar berikut ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-27_09-05-42.png&quot; alt=&quot;Add Data&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kalau belum, kemungkinan ada langkah-langkah yang terlewatkan.&lt;/p&gt;
+
+&lt;p&gt;Selanjutnya kita akan menguji apakah aplikasi sinatra kita sudah terhubung dengan database yang sudah dibuat.&lt;/p&gt;
+
+&lt;p&gt;Update file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt;, jadi seperti berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sinatra'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sinatra/activerecord&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./models/post&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; - &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Jalankan aplikasi sinatra kita.&lt;/p&gt;
+
+&lt;pre&gt;$ ruby app.rb&lt;/pre&gt;
+
+&lt;p&gt;Kemudian kita akses alamat &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-27_08-59-03.png&quot; alt=&quot;Test&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yeay, selamat kita berhasil menghubungkan aplikasi sinatra kita dengan database postgresql menggunakan active record.&lt;/p&gt;
+
+&lt;p&gt;Ditulisan berikutnya saya akan membahas bagaimana cara membuat Create Read Update Delete (CRUD) dan menambahkan views untuk aplikasi sinatra yang sudah dibuat.&lt;/p&gt;
+
+&lt;p&gt;Terima kasih sudah meluangkan waktunya untuk membaca tulisan saya ini.&lt;/p&gt;
+
+&lt;p&gt;Salam Rubyist!!&lt;/p&gt;
+
+&lt;h4 id=&quot;update&quot;&gt;Update&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[20 Juni 2021] Fix typo Rackfile to Rakefile&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate>
+        <link>https://achmiral.id/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2</link>
+        <guid isPermaLink="true">https://achmiral.id/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2</guid>
+        
+        
+        <category>ruby</category>
+        
+        <category>sinatra</category>
+        
+        <category>activerecord</category>
+        
+        <category>postgresql</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Aplikasi CRUD Sederhana Menggunakan Sinatra dan Postgresql [Part 1]</title>
+        <description>&lt;p&gt;Setelah beberapa tahun blog ini tak terurus, saya mencoba menghidupkan kembali blog ini tentunya dengan topik yang saya rasa cukup menarik, yang akan saya tulis disela-sela kesibukan saya mengerjakan skripsi wkwkwk. Kalau gak salah tulisan terakhir itu tanggal 30 November 2016, udah lama banget yah.&lt;/p&gt;
+
+&lt;p&gt;Jadi beberapa hari yang lalu saya mendapatkan &lt;em&gt;contract&lt;/em&gt; pertama saya di &lt;a href=&quot;https://www.upwork.com/o/profiles/users/_~01c156fb88f920717c/&quot;&gt;upwork&lt;/a&gt; (Horeee). 
+Di dalam contractnya saya diminta untuk membimbing si client untuk membuat sebuah aplikasi web sederhana menggunakan web framework &lt;a href=&quot;http://sinatrarb.com&quot;&gt;sinatra&lt;/a&gt;, mulai dari awal pembuatan project sampai bisa di deploy ke &lt;a href=&quot;https://sinatra-crud-postgresql.herokuapp.com&quot;&gt;heroku&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nekat aja sih, padahal saya belum pernah membuat aplikasi web pakai sinatra sebelumnya. 
+Tapi yah mumpung dapat kesempatan bagus, lumayan bisa belajar terus dapat bayaran pula wkwkwk.&lt;/p&gt;
+
+&lt;p&gt;Di tulisan kali ini saya ini berbagi bagaimana cara membuat sebuah aplikasi CRUD sederhana menggunakan framework Sinatra dan RDBMS Postgresql.&lt;/p&gt;
+
+&lt;p&gt;Tulisan ini nantinya terdiri dari 4 part:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Part 1 - Basic Sinatra&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/10/27/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-2&quot;&gt;Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3&quot;&gt;Part 3 - CRUD dan View&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2018/11/09/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-4-end&quot;&gt;Part 4 - Push project ke heroku&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Okey kita mulai saja.&lt;/p&gt;
+
+&lt;p&gt;Pertama kita buat sebuah folder project bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sinatra-crud-postgresql&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;$ mkdir sinatra-crud-postgresql&lt;/pre&gt;
+
+&lt;p&gt;Kemudian di dalam folder project kita tadi kita buat lagi 3 folder yakni &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;models&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;views&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;
+$ cd sinatra-crud-postgresql
+$ mkdir config models views
+&lt;/pre&gt;
+&lt;p&gt;Struktur foldernya seperti pada gambar dibawah ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-25_23-09-41.png&quot; alt=&quot;Create project&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Setelah itu kita buat file baru bernama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; di root project kita dan tambahkan kode berikut ini&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Gemfile&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://rubygems.org&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2.5.1&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sinatra&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Setelah itu kita jalankan perintah&lt;/p&gt;
+&lt;pre&gt;$ bundle install&lt;/pre&gt;
+&lt;p&gt;Untuk menginstall &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem&lt;/code&gt; yang telah kita deklarasikan di &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Kemudian kita buat file baru dengan nama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt;, file ini nantinya akan menjadi file utama dari aplikasi sinatra yang akan kita buat.&lt;/p&gt;
+
+&lt;p&gt;Struktur folder project kita sekarang seperti pada gambar dibawah ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-26_05-26-09.png&quot; alt=&quot;Struktur baru sinatra&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian pada file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.rb&lt;/code&gt; tambahkan kode berikut ini.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# app.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sinatra&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Penjelasan dari baris kode diatas adalah pertama kita akan memanggil &lt;em&gt;library&lt;/em&gt; sinatra menggunakan syntax &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;require &quot;sinatra&quot;&lt;/code&gt;, kemudian kita mendeklarasikan sebuah route baru di aplikasi sinatra kita. Ketika ada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET&lt;/code&gt; request ke alamat “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;”, maka aplikasi sinatra kita akan memberikan &lt;em&gt;response&lt;/em&gt; berupa text &lt;em&gt;“Hello World!”&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Untuk melihat hasilnya jalankan perintah&lt;/p&gt;
+&lt;pre&gt;$ ruby app.rb&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-25_23-30-52.png&quot; alt=&quot;Server Pertama&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Buka browser teman-teman, dan akses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4567&lt;/code&gt;, jika berhasil maka akan tampil seperti pada gambar dibawah ini&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/sinatra-crud-postgres/Screenshot_2018-10-25_23-31-42.png&quot; alt=&quot;sinatra hello world&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yeay, selamat kita telah berhasil membuat aplikasi web minimalis kita menggunakan sinatra.&lt;/p&gt;
+
+&lt;p&gt;Ditulisan berikutnya saya akan membahas bagaimana cara menghubungkan aplikasi sinatra kita ke database postgresql menggunakan active record.&lt;/p&gt;
+
+&lt;p&gt;Terima kasih sudah meluangkan waktunya untuk membaca tulisan saya ini.&lt;/p&gt;
+
+&lt;p&gt;Salam Rubyist!!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+        <link>https://achmiral.id/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1</link>
+        <guid isPermaLink="true">https://achmiral.id/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1</guid>
+        
+        
+        <category>ruby</category>
+        
+        <category>sinatra</category>
+        
+        <category>activerecord</category>
+        
+        <category>postgresql</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Cara Menjalankan Aplikasi Rails 5 + MySQL Pada Docker Container</title>
+        <description>&lt;p&gt;Selamat malam teman-teman, kali ini saya ingin sharing tutorial bagaimana cara menggunakan Docker pada aplikasi Rails versi 5. 
+Sebelum memulai tutorialnya pastikan komputer / laptop / macbook (amin :smile:) teman-teman sudah terinstall rails versi 5 dan docker 1.12.3 ya.&lt;/p&gt;
+
+&lt;h3 id=&quot;bahan---bahan&quot;&gt;Bahan - bahan&lt;/h3&gt;
+&lt;p&gt;Aplikasi yang akan kita gunakan pada tutorial kali ini antara lain:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.gudangilmukomputer.com/2015/05/cara-instal-ubuntu-1504-lengkap-dengan-gambar.html&quot;&gt;OS Ubuntu 14.04.5 64bit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gorails.com/setup/ubuntu/16.04&quot;&gt;Rails versi 5.0.0.1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/engine/installation/linux/ubuntulinux/&quot;&gt;Docker versi 1.12.3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/install/&quot;&gt;Docker compose versi 1.9.0&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tutorial instalasi aplikasi bisa langsung diklik pada nama aplikasinya&lt;/p&gt;
+
+&lt;h3 id=&quot;deskripsi-project&quot;&gt;Deskripsi Project&lt;/h3&gt;
+&lt;p&gt;Pada tutorial ini kita akan membuat sebuat aplikasi rails sederhana yaitu sebuah aplikasi note, dimana kita bisa 
+menyimpan note pada aplikasi rails kita. Kemudian, kita akan menggunakan MySQL 5.7 sebagai database nya. 
+Satu hal yang perhatikan bahwa proyek yang kita akan buat kali ini khusus untuk dijalankan pada environment development, jadi bukan untuk production.&lt;/p&gt;
+
+&lt;p&gt;Langsung saja kita mulai tutorialnya.&lt;/p&gt;
+
+&lt;h3 id=&quot;langkah-langkah&quot;&gt;Langkah-langkah&lt;/h3&gt;
+
+&lt;p&gt;Pertama kita buat sebuah projek rails baru dengan menggunakan perintah:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails new noteapp -d mysql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;-d&lt;/strong&gt; : artinya kita akan menggunakan database MySQL.&lt;/p&gt;
+
+&lt;p&gt;tunggu sampai struktur projeknya selesai dibuat. Jika sudah sampai pada tampilan seperti dibawah ini,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/langkah pertama.png&quot; alt=&quot;langkah pertama&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Berarti struktur projek aplikasi rails teman-teman telah selesai dibuat.&lt;/p&gt;
+
+&lt;p&gt;Kemudian kita buka folder projek rails yang telah dibuat menggunakan text editor favorit teman-teman,
+kali ini saya menggunakan sublime text 3. Tampilan projeknya akan seperti ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/02.png&quot; alt=&quot;Projek rails baru&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Setelah itu kita jalankan perintah:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scaffold&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Note&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:text&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Perintah ini akan mengenerate struktur folder beserta file-file yang dibutuhkan agar aplikasinya bisa kita jalankan.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/03.png&quot; alt=&quot;Generate Scaffold&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian kita akan melakukan beberapa config pada file &lt;em&gt;database.yml&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#noteapp/config/database.yml&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;&amp;amp;default&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql2&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;utf8&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;pool&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV['NOTEAPP_DATABASE_HOST'] %&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV['NOTEAPP_DATABASE_USERNAME'] %&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV['NOTEAPP_DATABASE_PASSWORD'] %&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/var/run/mysqld/mysqld.sock&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;development&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;*default&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;noteapp_development&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;*default&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;noteapp_test&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;production&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;*default&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;noteapp_production&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;kalau diperhatikan pada bagian &lt;strong&gt;&lt;em&gt;host&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;username&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;password&lt;/em&gt;&lt;/strong&gt; kita menggunakan environment 
+variabel yang nantinya kita akan buat filenya.&lt;/p&gt;
+
+&lt;p&gt;Sekarang kita perlu membuat sebuah environment file &lt;strong&gt;&lt;em&gt;.env&lt;/em&gt;&lt;/strong&gt;, kemudian kita ketikkan sebagai berikut:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#noteapp/.env&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# App Env&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;NOTEAPP_DATABASE_HOST=db&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;NOTEAPP_DATABASE_USERNAME=root&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;NOTEAPP_DATABASE_PASSWORD=password&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# MySQL Env&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;MYSQL_ROOT_PASSWORD=password&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;NOTEAPP_DATABASE_HOST merupakan environment variable yang kita gunakan untuk mengisi attribut host pada 
+konfigurasi &lt;em&gt;&lt;strong&gt;database.yml&lt;/strong&gt;&lt;/em&gt;. Kita menggunakan nama &lt;strong&gt;&lt;em&gt;db&lt;/em&gt;&lt;/strong&gt; karena nama tersebut merupakan nama dari 
+kontainer database MySQL kita yang nanti kita akan koneksikan ke kontainer aplikasi rails kita.&lt;/p&gt;
+
+&lt;p&gt;Langkah berikutnya kita akan membuat sebuah file &lt;strong&gt;&lt;em&gt;Dockerfile&lt;/em&gt;&lt;/strong&gt;. Dockerfile bisa disebut sebagai sebuah file resep 
+untuk membuat sebuah image, didalam file docker file berisi bahan-bahan dan perintah-perintah yang dibutuhkan 
+untuk membuat sebuah image.&lt;/p&gt;
+
+&lt;p&gt;Langsung saja kita buat sebuat file bernama &lt;strong&gt;&lt;em&gt;Dockerfile&lt;/em&gt;&lt;/strong&gt; pada root folder aplikasi rails kita.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#noteapp/Dockerfile&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# kita akan menggunakan image ruby:2.3.2-alpine sebagai &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# base image dari image baru kita&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alpine&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Kita perlu menginstall packet / library yang akan &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# dibutuhkan oleh aplikasi kita.&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;RUN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apk&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;libxml2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dev&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;libxslt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dev&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;zlib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dev&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;mysql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dev&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;nodejs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;tzdata&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+                               &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rf&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/var/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;apk&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/*&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# perintah ini akan membuat sebuah folder bernama app&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# pada image baru kita&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;RUN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/usr/s&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# perintah ini akam merubah folder kerja kita menjadi&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# /usr/src/app&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;WORKDIR&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/usr/s&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# perintah ini akan melakukan proses copy Gemfile dari komputer&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# kita ke image baru&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;COPY&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lock&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;/&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# perintah ini akan menjalankan bundle install pada image&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;RUN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bundler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jobs&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Perintah ini akan menjalankan proses copy folder source &lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# code aplikasi noteapp kita ke dalam image.&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;COPY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Setelah membuat Dockerfile selanjutnya kita akan membuat sebuah file lagi bernama &lt;em&gt;docker-compose.yml&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#noteapp/docker-compose.yml&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2'&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;depends_on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;db&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;links&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;db&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;env_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.env&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;3000:3000&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.:/usr/src/app&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rails server -b 0.0.0.0 -p &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3000&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql:5.7&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;env_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.env&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kita akan menggunakan 2 buah image yang pertama &lt;em&gt;app&lt;/em&gt; kemudian yang kedua adalah &lt;em&gt;db&lt;/em&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build: .&lt;/code&gt; artinya docker akan membuild sebuah image baru berdasarkan resep pada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;depends_on: -db&lt;/code&gt; artinya container &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app&lt;/code&gt; akan running setelah container &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;db&lt;/code&gt; running.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;links: -db&lt;/code&gt; artinya container ini akan dikoneksikan ke container &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;db&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;env_file: .env&lt;/code&gt; artinya container ini akan menggunakan environment variabel yang ada pada file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.env&lt;/code&gt;
+sebagai environment variabel pada image&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ports: -&quot;3000:3000&quot;&lt;/code&gt; artinya kita akan membuka port 3000 pada container, yang bisa kita akses dari luar kontainer pada porst 3000 juga&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;volumes: .:/usr/src/app&lt;/code&gt; artinya kita akan menghubungkan direktori projek kita yang ada dilaptop ke
+direktori &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/src/app&lt;/code&gt; pada image.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;command: rails server -b 0.0.0.0 -p 3000&lt;/code&gt; artinya ketika kita menjalankan kontainer dari image ini,maka container akan otomatis menjalankan perintah ini pada saat startup.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Image &lt;em&gt;db&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;image: mysql:5.7&lt;/code&gt; kita akan menggunakan image mysql:5.7 sebagai database&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;env_file: .env&lt;/code&gt; image &lt;em&gt;db&lt;/em&gt; akan membaca file .env untuk mencari environmen variabel MYSQL_ROOT_PASSWORD.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Kemudian kita save file &lt;em&gt;docker-compose.yml&lt;/em&gt; tersebut pada root directory noteapp kita. Jalankan perintah&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;docker-compose build&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;untuk membuild image kita berdasarkan config dari file &lt;em&gt;docker-compose.yml&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Proses pembuatan image akan berjalan, tunggu beberapa menit, tergantung kecepatan internet kita :smile:.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/04.png&quot; alt=&quot;docker compose build&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Jika proses build nya sudah selesai maka tampilannya akan mirip dengan tampilan berikut&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/05.png&quot; alt=&quot;docker compose build&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Setelah itu kita akan menjalankan container menggunakan perintah&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;docker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;compose&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;up&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Maka tampilannya akan seperti berikut ini&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/06.png&quot; alt=&quot;docker compose build&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian jalankan aplikasi web browser, dan akses alamat&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;localhost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Jika muncul tampilan seperti dibawah ini&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/07.png&quot; alt=&quot;docker compose build&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Jangan panik dulu, menurut pesan erornya menunjukan Unknown database, karena database untuk aplikasi kita belum dibuat. Untuk itu mari kita buat databasenya&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;noteapp_app_1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:setup&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;noteapp_app_1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:migrate&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;noteapp_app_1 adalah nama container aplikasi rails kita. Mungkin di komputer teman-teman akan berbeda namanya. Untuk mengeceknya teman-teman bisa menjalankan perintah&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ps&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Kira-kira outputnya akan seperti ini.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/08.png&quot; alt=&quot;docker compose build&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ketika perintah 	&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rails db:setup&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rails db:migrate&lt;/code&gt; dijalankan akan muncul output sebagai berikut&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/09.png&quot; alt=&quot;docker compose build&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kemudian kita kembali ke web browser dan refresh page.&lt;/p&gt;
+
+&lt;p&gt;Waawww,, aplikasi rails kita sudah running :smile:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/10.png&quot; alt=&quot;docker compose build&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Eitss.. tunggu dulu. Kita masih perlu merubah file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config/routes.rb&lt;/code&gt; pada projek kita, agar aplikasi noteapp kita bisa berjalan semestinya&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# config/routes.rb&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'notes#index'&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;resources&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:notes&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kemudian di refresh page pada browser&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://achmiral.id/assets/images/tutorial-rails-docker/11.png&quot; alt=&quot;docker compose build&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Maka tampilannya kira-kira akan seperti ini.&lt;/p&gt;
+
+&lt;p&gt;Selamat kita telah berhasil menjalankan aplikasi rails + mysql pada container docker :smile:.&lt;/p&gt;
+
+&lt;p&gt;Terima kasih sudah membaca tutorial bagaimana cara menjalankan aplikasi rails 5 + mysql pada docker container. Jika ada penjelasan saya yang kurang tepat mohon dikoreksi silahkan memberikan komentar di bawah ini :smile:, soalnya saya juga baru belajar mengenai teknologi container pada docker, jadi pemahaman saya mengenai docker masih banyak kurangnya. Saya menantikan komentar teman-teman, supaya kita bisa belajar bersama-sama :smile:&lt;/p&gt;
+</description>
+        <pubDate>Wed, 30 Nov 2016 00:00:00 +0000</pubDate>
+        <link>https://achmiral.id/2016/11/30/cara-menjalankan-aplikasi-rails-5-dan-mysql-pada-docker-container</link>
+        <guid isPermaLink="true">https://achmiral.id/2016/11/30/cara-menjalankan-aplikasi-rails-5-dan-mysql-pada-docker-container</guid>
+        
+        
+        <category>Ruby</category>
+        
+        <category>Ruby on Rails</category>
+        
+        <category>Docker</category>
+        
+        <category>Container</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Berkenalan dengan Docker</title>
+        <description>&lt;p&gt;Selamat malam teman-teman. Kali ini saya ingin share ilmu yang baru saja saya pelajari yaitu &lt;a href=&quot;http://docker.com&quot;&gt;Docker&lt;/a&gt;. Pertama kali saya mengenal docker adalah ketika saya mengikuti event &lt;a href=&quot;https://www.meetup.com/Docker-Indonesia/events/235327661/&quot;&gt;Docker Global Mentor Week - Yogyakarta&lt;/a&gt; yang diselegarakan oleh &lt;a href=&quot;https://www.meetup.com/Docker-Indonesia&quot;&gt;Docker Indonesia&lt;/a&gt;
+di kampus STMIK AKAKOM Yogyakarta. Poster event-nya ada dibawah ini.&lt;/p&gt;
+
+&lt;!-- _includes/image.html --&gt;
+&lt;!-- source https://superdevresources.com/image-caption-jekyll/ --&gt;
+&lt;div class=&quot;image-wrapper&quot;&gt;
+    
+    &lt;a href=&quot;https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/b/0/5/5/600_455865141.jpeg&quot; title=&quot;Docker Global Mentor Week - Yogyakarta&quot; target=&quot;_blank&quot;&gt;
+    
+    
+        &lt;img src=&quot;https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/b/0/5/5/600_455865141.jpeg&quot; alt=&quot;Docker Global Mentor Week - Yogyakarta&quot; /&gt;
+    
+    
+    &lt;/a&gt;
+    
+    
+        &lt;p class=&quot;image-caption&quot;&gt;Docker Global Mentor Week - Yogyakarta&lt;/p&gt;
+    
+&lt;/div&gt;
+
+&lt;h3 id=&quot;apa-itu-docker&quot;&gt;Apa itu Docker?&lt;/h3&gt;
+&lt;p&gt;Docker merupakan sebuah platform yang dibangun berdasarkan teknologi container.&lt;/p&gt;
+
+&lt;!-- _includes/image.html --&gt;
+&lt;!-- source https://superdevresources.com/image-caption-jekyll/ --&gt;
+&lt;div class=&quot;image-wrapper&quot;&gt;
+    
+    &lt;a href=&quot;https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg&quot; title=&quot;container&quot; target=&quot;_blank&quot;&gt;
+    
+    
+        &lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg&quot; alt=&quot;container&quot; /&gt;
+    
+    
+    &lt;/a&gt;
+    
+    
+        &lt;p class=&quot;image-caption&quot;&gt;Container&lt;/p&gt;
+    
+&lt;/div&gt;
+
+&lt;!-- ![container](https://upload.wikimedia.org/wikipedia/commons/d/df/Container_01_KMJ.jpg)
+*Coba* --&gt;
+
+&lt;p&gt;Tentunya bentuknya bukan seperti container yang di atas, tapi secara fungsi hampir sama.&lt;/p&gt;
+
+&lt;h3 id=&quot;box-kontainer&quot;&gt;Box Kontainer?&lt;/h3&gt;
+&lt;p&gt;Misalnya kita ingin mengirim beberapa barang dengan jumlah yang banyak ke luar kota atau ke luar negeri. Sebelum melakukan pengiriman, barang-barang tersebut perlu kita packing atau perlu kita simpan ke dalam tempat yang aman agar barang-barang tersebut tidak rusak ketika proses pengiriman.&lt;/p&gt;
+
+&lt;p&gt;Misalnya saja proses pengirimannya dari rumah kita sampai ke tempat tujuan adalah sebagai berikut dari rumah kita, barangnya diantar menggunakan mobil menuju stasiun kereta, kemudian dari stasiun kereta, barangnya diantar menggunakan kereta menuju ke pelabuhan, setibanya di pelabuhan barang tersebut kemudian di angkut ke kapal yang nantinya akan diantarkan ke kota / negara tujuan.&lt;/p&gt;
+
+&lt;p&gt;Dengan proses pengiriman yang panjang dan dengan kendaraan pengangkut yang berbeda-beda maka kemungkinan terjadinya kerusakan barang akan semakin besar. Untuk mengatasi masalah tersebut, kita bisa menggunakan container sebagai box pengiriman.&lt;/p&gt;
+
+&lt;p&gt;Jika menggunakan box kontainer maka proses pengirimannya akan menjadi lebih mudah. Proses pengirimannya sebagai berikut dari rumah kita barang-barang tersebut akan dimasukkan ke dalam box kontainer, kemudian barang-barang tersebut akan diantar oleh truk kontainer menuju ke stasiun, sesampainya di stasiun kemudian barang-barang tersebut diangkut dan diantar menggunakan kereta kontainer ke pelabuhan, dan setibanya di pelabuhan akan di angkut menggunakan kapal kontainer.&lt;/p&gt;
+
+&lt;h3 id=&quot;docker-container&quot;&gt;Docker Container?&lt;/h3&gt;
+&lt;p&gt;Gambaran cara kerja container pada Docker hampir sama seperti kontainer pada pengiriman barang-barang yang telah dijelaskan sebelumnya. Kita anggap barang-barang tersebut terdiri dari aplikasi [aplikasi rails], web server[apache/nginx], dan database server [mysql/postgres]. Dan aplikasi tersebut ingin kita deploy ke production server.&lt;/p&gt;
+
+&lt;p&gt;Aplikasi yang kita bangun tentunya membutuhkan banyak dependency library agar bisa running dengan lancar. Sehingga kita perlu menginstall dependency library pada laptop kita juga pada production server . Akan sangat melelahkan jika kita perlu melakukan konfigurasi server agar memiliki konfigurasi yang sama dengan laptop kita ataupun sebaliknya.&lt;/p&gt;
+
+&lt;p&gt;Namun, dengan menggunakan docker container masalah tersebut bisa teratasi karena ketika kita membuat sebuah kontainer dari aplikasi yang sedang kita develop maka dependency library yang dibutuhkan oleh aplikasi tersebut ikut masuk ke dalam kontainer. Sehingga kita hanya perlu melakukan sekali konfigurasi agar aplikasi kita bisa running dengan lancar di production server.&lt;/p&gt;
+
+&lt;p&gt;Mungkin ini yang dapat saya share untuk kali ini. Terima kasih untuk teman-teman yang sudah meluangkan waktunya untuk membaca tulisan ini, semoga bisa bermanfaat buat teman-teman yang ingin belajar tentang docker :smile: :smile: :smile:.&lt;/p&gt;
+
+&lt;p&gt;Jika teman-teman ingin bergabung dan mendapatkan info event-event yang akan di adakan oleh Docker Indonesia, bisa langsung join di meetup Docker indonesia di &lt;a href=&quot;https://www.meetup.com/Docker-Indonesia/&quot;&gt;sini&lt;/a&gt;, atau bisa join di group facebook &lt;a href=&quot;https://telegram.me/dockerid&quot;&gt;Docker.ID&lt;/a&gt; atau di Group Telegram &lt;a href=&quot;https://telegram.me/dockerid&quot;&gt;Docker.id&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 27 Nov 2016 00:00:00 +0000</pubDate>
+        <link>https://achmiral.id/2016/11/27/berkenalan-dengan-docker</link>
+        <guid isPermaLink="true">https://achmiral.id/2016/11/27/berkenalan-dengan-docker</guid>
+        
+        
+        <category>Docker</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+  </channel>
+</rss>
