@@ -20,7 +20,7 @@ Sedekar informasi buat teman-teman yang baru berkunjung di blog ini. Tulisan ini
 + [Part 1 - Basic Sinatra](/2018/10/25/membuat-simple-crud-dengan-sinatra-dan-postgresql-part-1)
 + Part 2 - Menghubungkan Sinatra ke Database Postgresql Menggunakan Active Record
 + [Part 3 - CRUD dan View](http://localhost:4000/2018/11/02/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-3)
-+ Part 4 - Push project ke heroku (Comming Soon)
++ [Part 4 - Push project ke heroku](/2018/11/09/aplikasi-crud-sederhana-menggunakan-sinatra-dan-postgresql-part-4-end)
 
 Okey langsung saja kita mulai.
 
